@@ -6,10 +6,11 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5005';
 
 function SignupPage() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(undefined);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,12 +18,12 @@ function SignupPage() {
     const requestBody = { name, email, password };
 
     axios
-      .post(`{API_URL}/auth/signup`, requestBody)
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
         console.log(response);
-        Navigate('/login');
+        navigate('/login');
       })
-      .catch(() => {
+      .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMsg(errorDescription);
       });
@@ -46,7 +47,7 @@ function SignupPage() {
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input type="text" name="password" id="password" value={password} onChange={handlePassword} />
+          <input type="password" name="password" id="password" value={password} onChange={handlePassword} autoComplete="currrent-password" />
         </div>
         <button type="submit">Submit</button>
       </form>
