@@ -1,16 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import logo from '../assets/images/Blue and Black Minimalist Travel Agency Logo.png';
 import '../component/Navbar.css';
 
 function Navbar() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOutUser();
+    navigate('/');
+  };
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
   return (
     <nav>
       <div>
-        <Link to="/">
+        <Link to="/dashboard">
           <img className="logo" src={logo} alt="logo" />
         </Link>
       </div>
@@ -21,6 +27,8 @@ function Navbar() {
           <Link to="/signup">Signup</Link>
         </div>
       )}
+
+      {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
     </nav>
   );
 }

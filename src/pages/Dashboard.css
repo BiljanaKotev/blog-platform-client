@@ -1,0 +1,13 @@
+a {
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+  .blog-posts-container {
+    position: absolute;
+  }
+
+  main {
+    position: relative;
+  }
+}
