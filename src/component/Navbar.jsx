@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
-import logo from '../assets/images/Blue and Black Minimalist Travel Agency Logo.png';
+import logo from '../assets/images/travel-hub-logo-black-bg.png';
 import '../component/Navbar.css';
 
-function Navbar() {
+function Navbar({ color, navLinkColor }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,21 +14,29 @@ function Navbar() {
   };
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
   return (
-    <nav>
+    <nav style={{ background: color }} className="nav blog-nav">
       <div>
-        <Link to="/dashboard">
+        <Link to="/">
           <img className="logo" src={logo} alt="logo" />
         </Link>
       </div>
 
       {!isLoggedIn && (
         <div className="nav-links-container">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+          <Link style={{ color: navLinkColor }} className="nav-link" to="/login">
+            Login
+          </Link>
+          <Link style={{ color: navLinkColor }} className="nav-link" to="/signup">
+            Signup
+          </Link>
         </div>
       )}
 
-      {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+      {isLoggedIn && (
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      )}
     </nav>
   );
 }

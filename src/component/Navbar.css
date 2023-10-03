@@ -1,11 +1,15 @@
 .logo {
   width: 100px;
+  /* filter: invert(); */
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   padding: 25px;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .nav-links-container {
@@ -14,6 +18,16 @@ nav {
   font-size: 22px;
 }
 
-a {
+.nav-link {
+  color: #ffffff;
   text-decoration: none;
+  font-size: 26px;
+}
+
+.logout-btn {
+  background: #d3c00d;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
 }

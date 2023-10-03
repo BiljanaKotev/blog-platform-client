@@ -1,0 +1,44 @@
+.homepage-header {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 56px;
+}
+
+.homepage-bg {
+  background: url('../assets/images/bg-pic.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+}
+
+.full-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.homepage-btn {
+  background: #d3c00d;
+  /* background-color: #f8e15d; */
+  color: white;
+  border: none;
+  position: absolute;
+  padding: 15px;
+  border-radius: 5px;
+  top: 80%;
+  transform: translate(-50px, -50px);
+  font-size: 22px;
+}
