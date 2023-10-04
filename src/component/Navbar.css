@@ -4,7 +4,8 @@
 
 nav {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: end;
   padding: 25px;
   align-items: center;
 }
@@ -21,8 +22,14 @@ nav {
   font-size: 26px;
 }
 
+.logo-wrapper {
+  align-self: start;
+}
+
 .logo-container {
   padding-left: 25px;
+  position: absolute;
+  left: 0;
 }
 
 .logout-btn {

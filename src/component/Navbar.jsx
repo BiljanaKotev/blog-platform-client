@@ -16,27 +16,19 @@ function Navbar({ color, navLinkColor }) {
 
   return (
     <nav style={{ background: color }} className="nav blog-nav">
-      <div className="logo-container">
-        {isLoggedIn ? (
-          <Link to="/dashboard">
-            <img className="logo" src={logo} alt="logo" />
-          </Link>
-        ) : (
-          <Link to="/">
-            <img className="logo" src={logo} alt="logo" />
-          </Link>
-        )}
-      </div>
-      {isLoggedIn && (
-        <div className="dashboard-links-container">
-          <Link to="/create-post" className="create-post-link">
-            + Create Post
-          </Link>
-          <Link to="/dashboard" className="dashboard-link">
-            Dashboard
-          </Link>
+      <div className="logo-wrapper">
+        <div className="logo-container">
+          {isLoggedIn ? (
+            <Link to="/dashboard">
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
+          ) : (
+            <Link to="/">
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
+          )}
         </div>
-      )}
+      </div>
 
       {!isLoggedIn && (
         <div className="nav-links-container">
@@ -48,7 +40,16 @@ function Navbar({ color, navLinkColor }) {
           </Link>
         </div>
       )}
-
+      {isLoggedIn && (
+        <div className="dashboard-links-container">
+          <Link to="/create-post" className="create-post-link">
+            + Create Post
+          </Link>
+          <Link to="/dashboard" className="dashboard-link">
+            Dashboard
+          </Link>
+        </div>
+      )}
       {isLoggedIn && (
         <button className="logout-btn" onClick={handleLogout}>
           Logout

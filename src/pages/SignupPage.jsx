@@ -12,7 +12,7 @@ function SignupPage() {
   const [errorMsg, setErrorMsg] = useState(undefined);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { name, email, password };
@@ -35,7 +35,7 @@ function SignupPage() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignupSubmit}>
         <h1>Signup</h1>
         <div>
           <label htmlFor="name">Name</label>

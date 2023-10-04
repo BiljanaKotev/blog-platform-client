@@ -28,7 +28,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/create-post" element={<CreatePost />}></Route>
         <Route path="blog-feed" element={<BlogFeed />}></Route>
-        <Route path="blog-feed:/id" element={<BlogFeed />}></Route>
+        <Route path="blog-feed/:id" element={<BlogFeed />}></Route>
       </Routes>
     </div>
   );

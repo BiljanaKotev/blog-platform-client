@@ -17,15 +17,18 @@ function LoginPage() {
   const navigate = useNavigate();
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
-  const handleSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
     console.log(requestBody);
 
     axios
-      .post(`${API_URL}/auth/login`, requestBody)
+      .post(`${API_URL}/auth/login`, requestBody, {
+        headers: {
+          'Cache-Control': 'no-cache',
+        },
+      })
       .then((response) => {
-        console.log('JWT token', response.data.authToken);
         storeToken(response.data.authToken);
         authenticateUser();
         navigate('/dashboard');
@@ -38,7 +41,7 @@ function LoginPage() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <h1>Login</h1>
 
         <div>

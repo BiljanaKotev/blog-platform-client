@@ -10,10 +10,15 @@ const API_URL = 'http://localhost:5005';
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
+  const token = localStorage.getItem('authToken');
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/dashboard`)
+      .get(`${API_URL}/api/dashboard`, {
+        headers: {
+          Authorization: `Bearer${token}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
       })
@@ -30,6 +35,10 @@ function Dashboard() {
     <main>
       <h1>{user.name}'s Dashboard</h1>
       <img className="dashboard-profile-pic" src={avatar} alt="login avatar" />
+      <div>
+        <label htmlFor="profilePicUrl">Upload pic</label>
+        <input type="file" name="profilePicUrl" id="profilePicUrl" />
+      </div>
       <div className="blog-posts-container">
         <div className="blog-post-header">
           <h2>Blog Posts:</h2>
