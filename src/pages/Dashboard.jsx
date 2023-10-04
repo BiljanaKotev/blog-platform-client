@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../pages/Dashboard.css';
@@ -11,6 +11,7 @@ const API_URL = 'http://localhost:5005';
 function Dashboard() {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
+  const [profilePic, setprofilePic] = useState('');
 
   useEffect(() => {
     axios
@@ -37,7 +38,7 @@ function Dashboard() {
       <img className="dashboard-profile-pic" src={avatar} alt="login avatar" />
       <div>
         <label htmlFor="profilePicUrl">Upload pic</label>
-        <input type="file" name="profilePicUrl" id="profilePicUrl" />
+        <input type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" />
       </div>
       <div className="blog-posts-container">
         <div className="blog-post-header">
