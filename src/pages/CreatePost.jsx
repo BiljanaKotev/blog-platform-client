@@ -1,8 +1,8 @@
 import React from 'react';
-import '../pages/BlogPost.css';
+import '../pages/CreatePost.css';
 import { useNavigate } from 'react-router-dom';
 
-function BlogPost() {
+function CreatePost() {
   const navigate = useNavigate();
   const handlePublish = () => {
     navigate('/blog-feed');
@@ -13,18 +13,18 @@ function BlogPost() {
       <form className="form" action="">
         <div className="form-container">
           <div>
-            <label className="cover-img-label" htmlFor="cover-img-input">
+            <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
-            <input className="file-input" name="cover-img-input" id="cover-img-input" type="file" accept="image" data-max-file-size-mb="25" />
+            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image" data-max-file-size-mb="25" />
           </div>
           <div>
-            <textarea name="" id="" cols="30" rows="10">
+            <textarea name="title" id="title" cols="30" rows="10">
               New post title here.....
             </textarea>
           </div>
           <div>
-            <textarea name="" id="" cols="30" rows="10">
+            <textarea name="content" id="content" cols="30" rows="10">
               Write your post content here
             </textarea>
           </div>
@@ -37,4 +37,4 @@ function BlogPost() {
   );
 }
 
-export default BlogPost;
+export default CreatePost;

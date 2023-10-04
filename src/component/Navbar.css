@@ -1,6 +1,5 @@
 .logo {
-  width: 100px;
-  /* filter: invert(); */
+  width: 48px;
 }
 
 nav {
@@ -8,8 +7,6 @@ nav {
   justify-content: space-between;
   padding: 25px;
   align-items: center;
-  margin-left: 25px;
-  margin-right: 25px;
 }
 
 .nav-links-container {
@@ -22,6 +19,10 @@ nav {
   color: #ffffff;
   text-decoration: none;
   font-size: 26px;
+}
+
+.logo-container {
+  padding-left: 25px;
 }
 
 .logout-btn {

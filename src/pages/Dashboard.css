@@ -1,5 +1,21 @@
-a {
+.blog-links-container {
+  padding-left: 50px;
+}
+
+.blog-link {
   display: block;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.create-post-link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 26px;
+}
+
+.dashboard-profile-pic {
+  width: 75px;
 }
 
 @media screen and (min-width: 992px) {

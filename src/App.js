@@ -5,7 +5,7 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
-import BlogPost from './pages/BlogPost';
+import CreatePost from './pages/CreatePost';
 import BlogFeed from './pages/BlogFeed';
 import { useLocation } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ function App() {
   let navbarColor = '';
   let navLinkColor = '';
 
-  navbarColor = location.pathname === '/blog-post' ? '#f5f5f5' : '';
+  navbarColor = location.pathname === '/create-post' ? '#f5f5f5' : '';
   navLinkColor = location.pathname === '/login' ? '#000000' : '';
 
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/blog-post" element={<BlogPost />}></Route>
+        <Route path="/create-post" element={<CreatePost />}></Route>
         <Route path="blog-feed" element={<BlogFeed />}></Route>
         <Route path="blog-feed:/id" element={<BlogFeed />}></Route>
       </Routes>
