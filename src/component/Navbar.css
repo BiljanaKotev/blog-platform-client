@@ -5,7 +5,7 @@
 nav {
   display: flex;
   /* justify-content: space-between; */
-  justify-content: end;
+  justify-content: flex-end;
   padding: 25px;
   align-items: center;
 }

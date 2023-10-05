@@ -5,19 +5,35 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../pages/Dashboard.css';
 import avatar from '../assets/images/avatar.png';
+import service from '../api/service';
 
 const API_URL = 'http://localhost:5005';
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
-  const [profilePic, setprofilePic] = useState('');
+  const [profilePic, setProfilePic] = useState(avatar);
+
+  const handleProfilePic = (e) => {
+    const file = e.target.files[0];
+    const token = localStorage.getItem('authToken');
+    if (file) {
+      service
+        .uploadProfilePic(file, token)
+        .then((response) => {
+          console.log(response);
+          setProfilePic(response.data.fileUrl);
+          console.log('client-side fileUrl', response.data.fileUrl);
+        })
+        .catch((err) => console.error('Error uploading the image', err));
+    }
+  };
 
   useEffect(() => {
     axios
       .get(`${API_URL}/api/dashboard`, {
         headers: {
-          Authorization: `Bearer${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
@@ -26,7 +42,7 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [token]);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -35,10 +51,12 @@ function Dashboard() {
   return (
     <main>
       <h1>{user.name}'s Dashboard</h1>
-      <img className="dashboard-profile-pic" src={avatar} alt="login avatar" />
+      <img className="dashboard-profile-pic" src={profilePic} alt="login avatar" />
       <div>
-        <label htmlFor="profilePicUrl">Upload pic</label>
-        <input type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" />
+        <label className="profile-pic-label" htmlFor="profilePicUrl">
+          Upload pic
+        </label>
+        <input className="profile-pic-input" type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" onChange={handleProfilePic} />
       </div>
       <div className="blog-posts-container">
         <div className="blog-post-header">
