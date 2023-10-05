@@ -15,15 +15,13 @@ function Dashboard() {
   const [profilePic, setProfilePic] = useState(avatar);
 
   const handleProfilePic = (e) => {
-    console.log('The file to be uploaded is', e.target.files[0]);
     const uploadData = new FormData();
     uploadData.append('imgUrl', e.target.files[0]);
     service
       .uploadProfilePic(uploadData, token)
       .then((response) => {
-        console.log(uploadData.get('imgUrl'));
-        console.log('response is', response);
         setProfilePic(response.fileUrl);
+        localStorage.setItem('profilePic', response.fileUrl);
       })
       .catch((err) => {
         console.log('err while uploading the file', err);
@@ -31,6 +29,10 @@ function Dashboard() {
   };
 
   useEffect(() => {
+    const storedProfilePic = localStorage.getItem('profilePic');
+    if (storedProfilePic) {
+      setProfilePic(storedProfilePic);
+    }
     axios
       .get(`${API_URL}/api/dashboard`, {
         headers: {

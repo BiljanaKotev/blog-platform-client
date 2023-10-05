@@ -1,7 +1,3 @@
-.blog-links-container {
-  padding-left: 50px;
-}
-
 .blog-link {
   display: block;
   text-decoration: none;
@@ -35,12 +31,10 @@
   display: none;
 }
 
-@media screen and (min-width: 992px) {
-  .blog-posts-container {
-    position: absolute;
-  }
-
-  main {
-    position: relative;
-  }
+.blog-posts-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
 }

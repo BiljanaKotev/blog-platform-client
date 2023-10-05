@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const API_URL = 'http://localhost:5005';
 
@@ -30,6 +31,7 @@ function BlogPost() {
       <h1>{post.title}</h1>
       <p>{post.content}</p>
       <p>{post.author}</p>
+      <Link to="/blog-feed">Back</Link>
     </div>
   );
 }
