@@ -14,7 +14,7 @@ function CreatePost() {
   const [author, setAuthor] = useState('');
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  console.log(user.name);
+
   const handlePublish = () => {
     const token = localStorage.getItem('authToken');
     setAuthor(user.name);
@@ -74,7 +74,9 @@ function CreatePost() {
             ></textarea>
           </div>
         </div>
-
+        {/* <label htmlFor="author">Created by: </label>
+        <input type="text" name="author" id="author" placeholder={user.name} /> */}
+        {/* <p>Created by: {user.name}</p> */}
         <button type="submit" onClick={handlePublish}>
           Publish
         </button>

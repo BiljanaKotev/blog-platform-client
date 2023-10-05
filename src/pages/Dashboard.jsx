@@ -15,18 +15,19 @@ function Dashboard() {
   const [profilePic, setProfilePic] = useState(avatar);
 
   const handleProfilePic = (e) => {
-    const file = e.target.files[0];
-    const token = localStorage.getItem('authToken');
-    if (file) {
-      service
-        .uploadProfilePic(file, token)
-        .then((response) => {
-          console.log(response);
-          setProfilePic(response.data.fileUrl);
-          console.log('client-side fileUrl', response.data.fileUrl);
-        })
-        .catch((err) => console.error('Error uploading the image', err));
-    }
+    console.log('The file to be uploaded is', e.target.files[0]);
+    const uploadData = new FormData();
+    uploadData.append('imgUrl', e.target.files[0]);
+    service
+      .uploadProfilePic(uploadData, token)
+      .then((response) => {
+        console.log(uploadData.get('imgUrl'));
+        console.log('response is', response);
+        setProfilePic(response.fileUrl);
+      })
+      .catch((err) => {
+        console.log('err while uploading the file', err);
+      });
   };
 
   useEffect(() => {

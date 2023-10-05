@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { AuthContext } from '../context/auth.context';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
@@ -8,9 +8,9 @@ const API_URL = 'http://localhost:5005';
 
 function BlogFeed() {
   const [posts, setPosts] = useState([]);
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
-
+  const navigate = { useNavigate };
   useEffect(() => {
     axios
       .get(`${API_URL}/api/blog-feed`, { headers: { Authorization: `Bearer ${token}` } })
@@ -35,7 +35,7 @@ function BlogFeed() {
             <h2>{post.author}</h2>
           </div>
           <div>
-            <Link to={`/blog-feed`}>
+            <Link to={`/blog-feed/${post._id}`}>
               <h1>{post.title}</h1>
             </Link>
           </div>

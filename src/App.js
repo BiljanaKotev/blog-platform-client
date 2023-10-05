@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
 import CreatePost from './pages/CreatePost';
 import BlogFeed from './pages/BlogFeed';
+import BlogPost from './pages/BlogPost';
 import { useLocation } from 'react-router-dom';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/create-post" element={<CreatePost />}></Route>
         <Route path="blog-feed" element={<BlogFeed />}></Route>
-        <Route path="blog-feed/:id" element={<BlogFeed />}></Route>
+        <Route path="blog-feed/:id" element={<BlogPost />}></Route>
       </Routes>
     </div>
   );

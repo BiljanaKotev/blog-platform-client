@@ -12,16 +12,9 @@ const errorHandler = (err) => {
   throw err;
 };
 
-const uploadProfilePic = (file, token) => {
-  const formData = new FormData();
-  formData.append('imageUrl', file);
-
+const uploadProfilePic = (uploadData, token) => {
   return api
-    .post('/upload', formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    .post('/upload', uploadData, { headers: { Authorization: `Bearer ${token}` } })
     .then((res) => res.data)
     .catch(errorHandler);
 };
