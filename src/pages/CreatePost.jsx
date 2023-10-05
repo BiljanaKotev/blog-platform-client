@@ -2,43 +2,37 @@ import React from 'react';
 import '../pages/CreatePost.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
-
-const API_URL = 'http://localhost:5005';
+import service from '../api/service';
 
 function CreatePost(props) {
-  const [coverImg, setcoverImg] = useState('');
+  const [coverImgFile, setCoverImgFile] = useState(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [author, setAuthor] = useState('');
+  // const [author, setAuthor] = useState('');
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const token = localStorage.getItem('authToken');
+
+  const handleCoverImgChange = (e) => {
+    setCoverImgFile(e.target.files[0]);
+  };
 
   const handlePublish = () => {
-    const token = localStorage.getItem('authToken');
-    setAuthor(user.name);
-    axios
-      .post(
-        `${API_URL}/api/create-post`,
-        {
-          coverImg: coverImg,
-          title: title,
-          content: content,
-          author: author,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+    const postData = {
+      title: title,
+      content: content,
+      author: user._id,
+    };
+
+    service
+      .createPostWithImage(postData, coverImgFile, token)
       .then((response) => {
-        console.log('Post created:', response.data);
+        console.log('Post with image created:', response);
         navigate('/blog-feed');
       })
       .catch((error) => {
-        console.error('Error creating post:', error);
+        console.error('Error:', error);
       });
   };
 
@@ -46,7 +40,6 @@ function CreatePost(props) {
     e.preventDefault();
   };
 
-  const handleCoverImg = (e) => setcoverImg(e.target.value);
   const handleTitle = (e) => setTitle(e.target.value);
   const handleContent = (e) => setContent(e.target.value);
 
@@ -58,8 +51,8 @@ function CreatePost(props) {
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
-            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImg} />
-            {coverImg && <img className="cover-img-preview" src={coverImg} alt="Cover preview" />}
+            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImgChange} />
+            {coverImgFile && <img className="cover-img-preview" src={coverImgFile} alt="Cover preview" />}
           </div>
           <div>
             <textarea className="create-post-title fs-1 mt-5" name="title" id="title" placeholder="New post title here..." value={title} onChange={handleTitle}></textarea>

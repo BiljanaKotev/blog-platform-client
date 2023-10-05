@@ -33,13 +33,21 @@ const uploadImage = (file) => {
     .catch(errorHandler);
 };
 
-const createPost = (newPost) => {
+const createPostWithImage = (postData, coverImgFile, token) => {
+  const uploadData = new FormData();
+  uploadData.append('imgUrl', coverImgFile);
+
   return api
-    .post('/create-post', newPost)
+    .post('/upload', uploadData, { headers: { Authorization: `Bearer ${token}` } })
+    .then((response) => {
+      postData.coverImg = response.data.fileUrl; // assuming your server responds with { fileUrl: '...' }
+
+      return api.post('/create-post', postData, { headers: { Authorization: `Bearer ${token}` } });
+    })
     .then((res) => res.data)
     .catch(errorHandler);
 };
 
-const service = { getBlogFeed, uploadImage, createPost, uploadProfilePic };
+const service = { getBlogFeed, uploadImage, createPostWithImage, uploadProfilePic };
 
 export default service;
