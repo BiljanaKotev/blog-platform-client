@@ -30,8 +30,10 @@ function Dashboard() {
 
   useEffect(() => {
     const storedProfilePic = localStorage.getItem('profilePic');
-    if (storedProfilePic) {
+    if (storedProfilePic && user && token) {
       setProfilePic(storedProfilePic);
+    } else {
+      setProfilePic(avatar);
     }
     axios
       .get(`${API_URL}/api/dashboard`, {
@@ -45,7 +47,7 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  }, [token]);
+  }, [user, token]);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -66,10 +68,10 @@ function Dashboard() {
           <h2>Blog Posts:</h2>
         </div>
         <div className="blog-links-container">
-          <Link className="blog-link" to="/blog-post">
+          <Link className="blog-link" to="/dashboard/blog-post">
             Adventures in Greece
           </Link>
-          <Link className="blog-link" to="/blog-post">
+          <Link className="blog-link" to="/dashboard/blog-post">
             Adventures in Greece
           </Link>
         </div>

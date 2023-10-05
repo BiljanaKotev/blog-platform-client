@@ -7,7 +7,7 @@ import { AuthContext } from '../context/auth.context';
 
 const API_URL = 'http://localhost:5005';
 
-function CreatePost() {
+function CreatePost(props) {
   const [coverImg, setcoverImg] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -41,6 +41,7 @@ function CreatePost() {
         console.error('Error creating post:', error);
       });
   };
+
   const handleCreateSubmit = (e) => {
     e.preventDefault();
   };
@@ -57,7 +58,7 @@ function CreatePost() {
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
-            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" value={coverImg} onChange={handleCoverImg} />
+            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImg} />
             {coverImg && <img className="cover-img-preview" src={coverImg} alt="Cover preview" />}
           </div>
           <div>
@@ -74,9 +75,8 @@ function CreatePost() {
             ></textarea>
           </div>
         </div>
-        {/* <label htmlFor="author">Created by: </label>
-        <input type="text" name="author" id="author" placeholder={user.name} /> */}
-        {/* <p>Created by: {user.name}</p> */}
+
+        <p>Created by: {user.name}</p>
         <button type="submit" onClick={handlePublish}>
           Publish
         </button>
