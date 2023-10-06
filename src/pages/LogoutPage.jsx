@@ -7,7 +7,7 @@ function LogoutPage() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('profilePic');
+    localStorage.clear();
     logOutUser();
     navigate('/');
   };

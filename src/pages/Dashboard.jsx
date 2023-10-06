@@ -10,9 +10,11 @@ import service from '../api/service';
 const API_URL = 'http://localhost:5005';
 
 function Dashboard() {
-  const { user } = useContext(AuthContext);
+  const { user, fetchUserPosts } = useContext(AuthContext);
+
   const token = localStorage.getItem('authToken');
   const [profilePic, setProfilePic] = useState(avatar);
+  const [userPosts, setUserPosts] = useState([]);
 
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
@@ -22,9 +24,14 @@ function Dashboard() {
       .then((response) => {
         setProfilePic(response.fileUrl);
         localStorage.setItem('profilePic', response.fileUrl);
+
+        return axios.post(`${API_URL}/api/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
+      })
+      .then(() => {
+        console.group('User profile picture updated successfully');
       })
       .catch((err) => {
-        console.log('err while uploading the file', err);
+        console.log('Error while updating the profile picture', err);
       });
   };
 
@@ -35,19 +42,14 @@ function Dashboard() {
     } else {
       setProfilePic(avatar);
     }
-    axios
-      .get(`${API_URL}/api/dashboard`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [user, token]);
+
+    fetchUserPosts().then((data) => {
+      console.log('dashboard', data);
+      if (data) {
+        setUserPosts(data);
+      }
+    });
+  }, [user, token, fetchUserPosts]);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -68,12 +70,11 @@ function Dashboard() {
           <h2>Blog Posts:</h2>
         </div>
         <div className="blog-links-container">
-          <Link className="blog-link" to="/dashboard/blog-post">
-            Adventures in Greece
-          </Link>
-          <Link className="blog-link" to="/dashboard/blog-post">
-            Adventures in Greece
-          </Link>
+          {userPosts.map((post) => (
+            <Link key={post._id} className="blog-link" to={`/user-posts/${post._id}`}>
+              <h2>{post.title}</h2>
+            </Link>
+          ))}
         </div>
       </div>
     </main>

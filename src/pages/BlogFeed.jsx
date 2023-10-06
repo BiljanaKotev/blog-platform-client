@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
+import service from '../api/service';
 
 const API_URL = 'http://localhost:5005';
 
 function BlogFeed() {
   const [posts, setPosts] = useState([]);
   const token = localStorage.getItem('authToken');
+  const [search, setSearch] = useState('');
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    axios
-      .get(`${API_URL}/api/blog-feed`, { headers: { Authorization: `Bearer ${token}` } })
+    service
+      .fetchBlogFeed(token)
       .then((response) => {
-        console.log(response.data);
-        setPosts(response.data);
+        console.log('Fetched Posts:', response);
+        setPosts(response);
       })
       .catch((error) => {
         console.log(error);
@@ -24,23 +26,27 @@ function BlogFeed() {
   }, []);
 
   return (
-    <div className="blog-feed-container">
-      {posts.map((post) => (
-        <div className="blog-feed-post-container" key={post._id}>
-          <div>
-            <img src={post.coverImg} alt="cover" />
+    <div>
+      <label htmlFor="searchBar"></label>
+      <input className="search-bar" type="text" placeholder="Search" name="searchBar" id="searchBar" />
+      <div className="blog-feed-container">
+        {posts.map((post) => (
+          <div className="blog-feed-post-container" key={post._id}>
+            <div>
+              <img className="cover-img" src={post.coverImg} alt="cover" />
+            </div>
+            <div className="user-details-container">
+              {post.author && <img className="blogfeed-profile-pic" src={post.author.profilePicUrl} alt="Author" />}
+              <h2 className="user-name">{user && user.name ? user.name : 'Loading...'}</h2>
+            </div>
+            <div className="link-container">
+              <Link to={`/blog-feed/${post._id}`} className="title-link">
+                <h1>{post.title}</h1>
+              </Link>
+            </div>
           </div>
-          <div>
-            <img src={post.profilePicUrl} alt="Author" />
-            <h2>{user.name}</h2>
-          </div>
-          <div>
-            <Link to={`/blog-feed/${post._id}`}>
-              <h1>{post.title}</h1>
-            </Link>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

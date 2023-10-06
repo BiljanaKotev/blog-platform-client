@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import '../pages/BlogPost.css';
 
 const API_URL = 'http://localhost:5005';
 
@@ -26,11 +27,11 @@ function BlogPost() {
   }
 
   return (
-    <div>
-      <img src={post.coverImg} alt="Cover" />
+    <div className="blog-post-container">
+      <img className="cover-img blog-post-img" src={post.coverImg} alt="Cover" />
       <h1>{post.title}</h1>
       <p>{post.content}</p>
-      <p>{post.author}</p>
+      <p>Created By: {post.author.name}</p>
       <Link to="/blog-feed">Back</Link>
     </div>
   );

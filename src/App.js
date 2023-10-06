@@ -10,11 +10,14 @@ import BlogFeed from './pages/BlogFeed';
 import BlogPost from './pages/BlogPost';
 import UserPost from './pages/UserPost';
 import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/auth.context';
 
 function App() {
   const location = useLocation();
   let navbarColor = '';
   let navLinkColor = '';
+  const { user } = useContext(AuthContext);
 
   navbarColor = location.pathname === '/create-post' ? '#f5f5f5' : '';
   navLinkColor = location.pathname === '/login' ? '#000000' : '';
@@ -27,8 +30,9 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/user-posts" element={<UserPost />}></Route>
+        <Route path="/dashboard" element={<Dashboard key={user?.id || 'default'} />} />
+
+        <Route path="/user-posts/:id" element={<UserPost />}></Route>
         <Route path="/create-post" element={<CreatePost />}></Route>
         <Route path="blog-feed" element={<BlogFeed />}></Route>
         <Route path="blog-feed/:id" element={<BlogPost />}></Route>
@@ -38,4 +42,3 @@ function App() {
 }
 
 export default App;
-

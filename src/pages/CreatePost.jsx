@@ -14,6 +14,11 @@ function CreatePost(props) {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
 
+  if (!user || !user._id) {
+    console.error('No user is logged in');
+    return;
+  }
+
   const handleCoverImgChange = (e) => {
     setCoverImgFile(e.target.files[0]);
   };
@@ -52,7 +57,7 @@ function CreatePost(props) {
               Add a cover image
             </label>
             <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImgChange} />
-            {coverImgFile && <img className="cover-img-preview" src={coverImgFile} alt="Cover preview" />}
+            {coverImgFile && <img className="cover-img-preview" src={URL.createObjectURL(coverImgFile)} alt="Cover preview" />}
           </div>
           <div>
             <textarea className="create-post-title fs-1 mt-5" name="title" id="title" placeholder="New post title here..." value={title} onChange={handleTitle}></textarea>

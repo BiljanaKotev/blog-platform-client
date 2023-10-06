@@ -19,9 +19,9 @@ const uploadProfilePic = (uploadData, token) => {
     .catch(errorHandler);
 };
 
-const getBlogFeed = () => {
+const updateUserProfilePic = (profilePicUrl, token) => {
   return api
-    .get('/blog-feed')
+    .post('/update-user-profile-pic', { profilePicUrl }, { headers: { Authorization: `Bearer ${token}` } })
     .then((res) => res.data)
     .catch(errorHandler);
 };
@@ -40,7 +40,7 @@ const createPostWithImage = (postData, coverImgFile, token) => {
   return api
     .post('/upload', uploadData, { headers: { Authorization: `Bearer ${token}` } })
     .then((response) => {
-      postData.coverImg = response.data.fileUrl; // assuming your server responds with { fileUrl: '...' }
+      postData.coverImg = response.data.fileUrl;
 
       return api.post('/create-post', postData, { headers: { Authorization: `Bearer ${token}` } });
     })
@@ -48,6 +48,22 @@ const createPostWithImage = (postData, coverImgFile, token) => {
     .catch(errorHandler);
 };
 
-const service = { getBlogFeed, uploadImage, createPostWithImage, uploadProfilePic };
+export const fetchBlogFeed = (token) => {
+  return axios
+    .get(`${API_URL}/blog-feed`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error('Error fetching blog feed:', error);
+      return Promise.reject(error);
+    });
+};
+
+const service = { updateUserProfilePic, uploadImage, createPostWithImage, uploadProfilePic, fetchBlogFeed };
 
 export default service;
