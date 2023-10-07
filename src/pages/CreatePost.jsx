@@ -5,11 +5,10 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import service from '../api/service';
 
-function CreatePost(props) {
+function CreatePost() {
   const [coverImgFile, setCoverImgFile] = useState(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // const [author, setAuthor] = useState('');
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
@@ -33,7 +32,7 @@ function CreatePost(props) {
     service
       .createPostWithImage(postData, coverImgFile, token)
       .then((response) => {
-        console.log('Post with image created:', response);
+        console.log(response);
         navigate('/blog-feed');
       })
       .catch((error) => {
@@ -60,11 +59,18 @@ function CreatePost(props) {
             {coverImgFile && <img className="cover-img-preview" src={URL.createObjectURL(coverImgFile)} alt="Cover preview" />}
           </div>
           <div>
-            <textarea className="create-post-title fs-1 mt-5" name="title" id="title" placeholder="New post title here..." value={title} onChange={handleTitle}></textarea>
+            <textarea
+              className="create-post-title fs-1 mt-5 create-post-textarea"
+              name="title"
+              id="title"
+              placeholder="New post title here..."
+              value={title}
+              onChange={handleTitle}
+            ></textarea>
           </div>
           <div>
             <textarea
-              className="create-post-content fs-3 mt-5"
+              className="create-post-content fs-3 mt-5 create-post-textarea"
               name="content"
               id="content"
               placeholder="write your post conent here..."

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import DeleteBtn from '../component/DeleteBtn';
+import EditBtn from '../component/EditBtn';
 
 const API_URL = 'http://localhost:5005';
 
@@ -28,14 +30,12 @@ function UserPost() {
 
   return (
     <div>
-      <Link to="/user-post-edit">Edit</Link>
-      <Link to="/user-post-delete">Delete</Link>
       <div className="">
         <img className="cover-img blog" src={userPost.coverImg} alt="Cover" />
         <h1>{userPost.title}</h1>
         <p>{userPost.content}</p>
         {userPost.author && userPost.author.name && <p>Created By: {userPost.author.name}</p>}
-
+        <EditBtn />
         <Link to="/dashboard">Back</Link>
       </div>
     </div>

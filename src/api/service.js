@@ -3,9 +3,7 @@
 import axios from 'axios';
 const API_URL = 'http://localhost:5005/api';
 const api = axios.create({
-  // make sure you use PORT = 5005 (the port where our server is running)
   baseURL: `${API_URL}`,
-  // withCredentials: true // => you might need this option if using cookies and sessions
 });
 
 const errorHandler = (err) => {
@@ -48,7 +46,7 @@ const createPostWithImage = (postData, coverImgFile, token) => {
     .catch(errorHandler);
 };
 
-export const fetchBlogFeed = (token) => {
+const fetchBlogFeed = (token) => {
   return axios
     .get(`${API_URL}/blog-feed`, {
       headers: {
@@ -64,6 +62,29 @@ export const fetchBlogFeed = (token) => {
     });
 };
 
-const service = { updateUserProfilePic, uploadImage, createPostWithImage, uploadProfilePic, fetchBlogFeed };
+const editPostWithImage = (postId, postData, coverImgFile, token) => {
+  const uploadData = new FormData();
+
+  if (coverImgFile) {
+    uploadData.append('imgUrl', coverImgFile);
+
+    return api
+      .post('/upload', uploadData, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        postData.coverImg = response.data.fileUrl;
+
+        return api.put(`/user-posts/${postId}`, postData, { headers: { Authorization: `Bearer ${token}` } });
+      })
+      .then((res) => res.data)
+      .catch(errorHandler);
+  } else {
+    return api
+      .put(`/user-posts/${postId}`, postData, { headers: { Authorization: `Bearer ${token}` } })
+      .then((res) => res.data)
+      .catch(errorHandler);
+  }
+};
+
+const service = { updateUserProfilePic, uploadImage, createPostWithImage, uploadProfilePic, fetchBlogFeed, editPostWithImage };
 
 export default service;

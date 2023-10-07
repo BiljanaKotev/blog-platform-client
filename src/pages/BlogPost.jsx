@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/BlogPost.css';
+import '../component/Comments';
+import Comments from '../component/Comments';
 
 const API_URL = 'http://localhost:5005';
 
@@ -32,6 +34,7 @@ function BlogPost() {
       <h1>{post.title}</h1>
       <p>{post.content}</p>
       <p>Created By: {post.author.name}</p>
+      <Comments />
       <Link to="/blog-feed">Back</Link>
     </div>
   );

@@ -11,10 +11,9 @@ const API_URL = 'http://localhost:5005';
 
 function Dashboard() {
   const { user, fetchUserPosts } = useContext(AuthContext);
-
-  const token = localStorage.getItem('authToken');
   const [profilePic, setProfilePic] = useState(avatar);
   const [userPosts, setUserPosts] = useState([]);
+  const token = localStorage.getItem('authToken');
 
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
