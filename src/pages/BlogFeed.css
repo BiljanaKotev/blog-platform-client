@@ -1,5 +1,56 @@
+.search-bar {
+  width: 30%;
+  height: 40px;
+}
+
 .blog-feed-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  margin-top: 150px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 50px;
+}
+
+.cover-img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.user-details-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-left: 150px;
+  margin-top: 25px;
+}
+
+.user-name {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.title-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.title-link > h1 {
+  font-size: 20px;
+}
+
+.blog-feed-post-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.link-container {
+  text-align: left;
+  margin-left: 155px;
+}
+
+.blogfeed-profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
 }

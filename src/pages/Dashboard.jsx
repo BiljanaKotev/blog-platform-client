@@ -5,28 +5,51 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../pages/Dashboard.css';
 import avatar from '../assets/images/avatar.png';
+import service from '../api/service';
 
 const API_URL = 'http://localhost:5005';
 
 function Dashboard() {
-  const { user } = useContext(AuthContext);
+  const { user, fetchUserPosts } = useContext(AuthContext);
+  const [profilePic, setProfilePic] = useState(avatar);
+  const [userPosts, setUserPosts] = useState([]);
   const token = localStorage.getItem('authToken');
-  const [profilePic, setprofilePic] = useState('');
+
+  const handleProfilePic = (e) => {
+    const uploadData = new FormData();
+    uploadData.append('imgUrl', e.target.files[0]);
+    service
+      .uploadProfilePic(uploadData, token)
+      .then((response) => {
+        setProfilePic(response.fileUrl);
+        localStorage.setItem('profilePic', response.fileUrl);
+
+        return axios.post(`${API_URL}/api/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
+      })
+      .then(() => {
+        console.group('User profile picture updated successfully');
+      })
+      .catch((err) => {
+        console.log('Error while updating the profile picture', err);
+      });
+  };
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/api/dashboard`, {
-        headers: {
-          Authorization: `Bearer${token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    const storedProfilePic = localStorage.getItem('profilePic');
+    if (storedProfilePic && user && token) {
+      setProfilePic(storedProfilePic);
+    } else {
+      setProfilePic(avatar);
+    }
+
+    // FROM AUTH.CONTEXT
+    fetchUserPosts().then((data) => {
+      console.log('dashboard', data);
+      if (data) {
+        setUserPosts(data);
+      }
+    });
+  }, [user, token, fetchUserPosts]);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -35,22 +58,23 @@ function Dashboard() {
   return (
     <main>
       <h1>{user.name}'s Dashboard</h1>
-      <img className="dashboard-profile-pic" src={avatar} alt="login avatar" />
+      <img className="dashboard-profile-pic" src={profilePic} alt="login avatar" />
       <div>
-        <label htmlFor="profilePicUrl">Upload pic</label>
-        <input type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" />
+        <label className="profile-pic-label" htmlFor="profilePicUrl">
+          Upload pic
+        </label>
+        <input className="profile-pic-input" type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" onChange={handleProfilePic} />
       </div>
       <div className="blog-posts-container">
         <div className="blog-post-header">
           <h2>Blog Posts:</h2>
         </div>
         <div className="blog-links-container">
-          <Link className="blog-link" to="/blog-post">
-            Adventures in Greece
-          </Link>
-          <Link className="blog-link" to="/blog-post">
-            Adventures in Greece
-          </Link>
+          {userPosts.map((post) => (
+            <Link key={post._id} className="blog-link" to={`/user-posts/${post._id}`}>
+              <h2>{post.title}</h2>
+            </Link>
+          ))}
         </div>
       </div>
     </main>

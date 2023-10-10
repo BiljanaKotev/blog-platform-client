@@ -1,0 +1,16 @@
+.comments-textarea {
+  border: 1px solid black;
+  width: 750px;
+  height: 150px;
+}
+
+.comments-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.comment-author {
+  margin-bottom: 0;
+}

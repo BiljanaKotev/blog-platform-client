@@ -42,3 +42,8 @@
   transform: translate(-50px, -50px);
   font-size: 22px;
 }
+
+.homepage-img {
+  width: 1400px;
+  max-width: 100%;
+}

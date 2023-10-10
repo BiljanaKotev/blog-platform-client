@@ -1,0 +1,5 @@
+.user-posts-btns-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}

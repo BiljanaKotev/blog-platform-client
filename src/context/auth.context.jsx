@@ -21,6 +21,7 @@ function AuthProviderWrapper(props) {
       axios
         .get(`${API_URL}/auth/verify`, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then((response) => {
+          console.log('logout', response);
           const user = response.data;
 
           setIsLoggedIn(true);
@@ -28,8 +29,7 @@ function AuthProviderWrapper(props) {
           setUser(user);
         })
         .catch((error) => {
-          // console.log(error);
-          // removeToken();
+          console.log('logout-error', error);
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
@@ -42,6 +42,7 @@ function AuthProviderWrapper(props) {
   };
 
   const removeToken = () => {
+    console.log('removetoken');
     localStorage.removeItem('authToken');
   };
 
@@ -54,7 +55,26 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
-  return <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>{props.children}</AuthContext.Provider>;
+  // USED IN DASHBOARD PAGE
+  const fetchUserPosts = () => {
+    const storedToken = localStorage.getItem('authToken');
+
+    return axios
+      .get(`${API_URL}/api/dashboard`, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        return null;
+      });
+  };
+
+  return <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser, fetchUserPosts }}>{props.children}</AuthContext.Provider>;
 }
 
 export { AuthProviderWrapper, AuthContext };

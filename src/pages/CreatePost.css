@@ -29,7 +29,7 @@
   display: none;
 }
 
-textarea {
+.create-post-textarea {
   border: none;
   width: 750px;
   margin: 0 auto;

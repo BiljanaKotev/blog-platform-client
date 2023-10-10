@@ -1,0 +1,19 @@
+.blog-post-img {
+  width: 800px;
+}
+
+.blog-post-container > p {
+  width: 50%;
+  margin: 0 auto;
+  line-height: 1.5;
+  margin-top: 50px;
+  text-align: left;
+  font-size: 22px;
+  margin-bottom: 100px;
+}
+
+.blog-post-container > a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
