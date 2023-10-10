@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import logo from '../assets/images/travel-hub-logo-black-bg.png';
 import '../component/Navbar.css';
+import LogoutPage from '../pages/LogoutPage';
 
 function Navbar({ color, navLinkColor }) {
   const navigate = useNavigate();
@@ -53,11 +54,7 @@ function Navbar({ color, navLinkColor }) {
           </Link>
         </div>
       )}
-      {isLoggedIn && (
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      )}
+      {isLoggedIn && <LogoutPage />}
     </nav>
   );
 }

@@ -20,6 +20,7 @@ function LoginPage() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
+
     axios
       .post(`${API_URL}/auth/login`, requestBody, {
         headers: {
@@ -27,7 +28,12 @@ function LoginPage() {
         },
       })
       .then((response) => {
+        console.log('Login response:', response.data);
+
         storeToken(response.data.authToken);
+        if (response.data.profilePicUrl) {
+          localStorage.setItem('profilePic', response.data.profilePicUrl);
+        }
         authenticateUser();
         navigate('/dashboard');
       })
