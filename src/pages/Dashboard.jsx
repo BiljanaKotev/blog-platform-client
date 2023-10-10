@@ -42,6 +42,7 @@ function Dashboard() {
       setProfilePic(avatar);
     }
 
+    // FROM AUTH.CONTEXT
     fetchUserPosts().then((data) => {
       console.log('dashboard', data);
       if (data) {

@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
-import { useContext } from 'react';
-import { AuthContext } from '../context/auth.context';
-import service from '../api/service';
 
-const API_URL = 'http://localhost:5005';
+import service from '../api/service';
+import Search from '../component/Search';
 
 function BlogFeed() {
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
-  const [search, setSearch] = useState('');
-  const { user } = useContext(AuthContext);
+
   useEffect(() => {
     service
       .fetchBlogFeed(token)
       .then((response) => {
-        console.log('Fetched Posts:', response);
         setPosts(response);
+        setFilteredPosts(response);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [token]);
 
   return (
     <div>
-      <label htmlFor="searchBar"></label>
-      <input className="search-bar" type="text" placeholder="Search" name="searchBar" id="searchBar" />
+      <Search setFilteredPosts={setFilteredPosts} />
       <div className="blog-feed-container">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <div className="blog-feed-post-container" key={post._id}>
             <div>
               <img className="cover-img" src={post.coverImg} alt="cover" />

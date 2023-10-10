@@ -10,6 +10,8 @@ const errorHandler = (err) => {
   throw err;
 };
 
+// USED ON THE DASHBOARD PAGE
+
 const uploadProfilePic = (uploadData, token) => {
   return api
     .post('/upload', uploadData, { headers: { Authorization: `Bearer ${token}` } })
@@ -17,20 +19,21 @@ const uploadProfilePic = (uploadData, token) => {
     .catch(errorHandler);
 };
 
-const updateUserProfilePic = (profilePicUrl, token) => {
-  return api
-    .post('/update-user-profile-pic', { profilePicUrl }, { headers: { Authorization: `Bearer ${token}` } })
-    .then((res) => res.data)
-    .catch(errorHandler);
-};
+// const updateUserProfilePic = (profilePicUrl, token) => {
+//   return api
+//     .post('/update-user-profile-pic', { profilePicUrl }, { headers: { Authorization: `Bearer ${token}` } })
+//     .then((res) => res.data)
+//     .catch(errorHandler);
+// };
 
-const uploadImage = (file) => {
-  return api
-    .post('/upload', file)
-    .then((res) => res.data)
-    .catch(errorHandler);
-};
+// const uploadImage = (file) => {
+//   return api
+//     .post('/upload', file)
+//     .then((res) => res.data)
+//     .catch(errorHandler);
+// };
 
+// USED ON THE CREATE POST PAGE
 const createPostWithImage = (postData, coverImgFile, token) => {
   const uploadData = new FormData();
   uploadData.append('imgUrl', coverImgFile);
@@ -46,6 +49,7 @@ const createPostWithImage = (postData, coverImgFile, token) => {
     .catch(errorHandler);
 };
 
+// USED ON THE BLOGFEED PAGE
 const fetchBlogFeed = (token) => {
   return axios
     .get(`${API_URL}/blog-feed`, {
@@ -62,6 +66,7 @@ const fetchBlogFeed = (token) => {
     });
 };
 
+// USED ON THE EDIT PAGE
 const editPostWithImage = (postId, postData, coverImgFile, token) => {
   const uploadData = new FormData();
 
@@ -85,6 +90,6 @@ const editPostWithImage = (postId, postData, coverImgFile, token) => {
   }
 };
 
-const service = { updateUserProfilePic, uploadImage, createPostWithImage, uploadProfilePic, fetchBlogFeed, editPostWithImage };
+const service = { createPostWithImage, uploadProfilePic, fetchBlogFeed, editPostWithImage };
 
 export default service;

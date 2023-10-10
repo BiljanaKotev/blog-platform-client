@@ -55,6 +55,7 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
+  // USED IN DASHBOARD PAGE
   const fetchUserPosts = () => {
     const storedToken = localStorage.getItem('authToken');
 
