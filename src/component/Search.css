@@ -1,0 +1,21 @@
+.search-bar {
+  margin-top: 10%;
+  border: 3px solid grey;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.search-btn {
+  margin-top: 10%;
+}
+
+.search-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 5px;
+}

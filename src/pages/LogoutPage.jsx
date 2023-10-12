@@ -5,7 +5,6 @@ import { AuthContext } from '../context/auth.context';
 function LogoutPage() {
   const { logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const { user } = useContext(AuthContext);
 
   const handleLogout = () => {
     localStorage.removeItem('profilePic');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import logo from '../assets/images/travel-hub-logo-black-bg.png';
@@ -7,13 +7,13 @@ import '../component/Navbar.css';
 import LogoutPage from '../pages/LogoutPage';
 
 function Navbar({ color, navLinkColor }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logOutUser();
-    navigate('/');
-  };
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  // const handleLogout = () => {
+  //   logOutUser();
+  //   navigate('/');
+  // };
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <nav style={{ background: color }} className="nav blog-nav">

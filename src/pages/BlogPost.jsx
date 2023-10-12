@@ -31,11 +31,13 @@ function BlogPost() {
   return (
     <div className="blog-post-container">
       <img className="cover-img blog-post-img" src={post.coverImg} alt="Cover" />
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+      <h1 className="blog-post-header">{post.title}</h1>
+      <p className="blog-post-content">{post.content}</p>
       <p>Created By: {post.author.name}</p>
       <Comments />
-      <Link to="/blog-feed">Back</Link>
+      <Link to="/blog-feed" className="blog-post-link">
+        Back
+      </Link>
     </div>
   );
 }

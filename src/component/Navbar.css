@@ -4,7 +4,11 @@
 
 nav {
   display: flex;
-  /* justify-content: space-between; */
+  position: fixed;
+
+  top: 0px;
+  z-index: 100;
+  width: 100%;
   justify-content: flex-end;
   padding: 25px;
   align-items: center;

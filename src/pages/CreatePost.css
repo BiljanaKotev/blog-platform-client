@@ -27,10 +27,31 @@
 
 .cover-img-input {
   display: none;
+  border-radius: 5px;
+  border: 3px solid grey;
 }
 
 .create-post-textarea {
   border: none;
   width: 750px;
   margin: 0 auto;
+  resize: none;
+}
+
+.create-form {
+  margin-top: 10%;
+}
+
+.create-btn {
+  background: #000000;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.create-post-title {
+  height: 60px;
+}
+
+.create-post-content {
+  height: 300px;
 }

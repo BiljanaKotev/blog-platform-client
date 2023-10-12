@@ -49,7 +49,7 @@ function CreatePost() {
 
   return (
     <main className="blog-main">
-      <form className="form" onSubmit={handleCreateSubmit}>
+      <form className="form create-form" onSubmit={handleCreateSubmit}>
         <div className="form-container">
           <div>
             <label className="cover-img-label" htmlFor="coverImg">
@@ -81,7 +81,7 @@ function CreatePost() {
         </div>
 
         <p>Created by: {user.name}</p>
-        <button type="submit" onClick={handlePublish}>
+        <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>
       </form>

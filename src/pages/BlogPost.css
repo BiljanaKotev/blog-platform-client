@@ -2,11 +2,18 @@
   width: 800px;
 }
 
+.blog-post-header {
+  width: 800px;
+  margin: 0 auto;
+  word-wrap: break-word;
+  margin-top: 25px;
+  text-align: left;
+}
+
 .blog-post-container > p {
   width: 50%;
-  margin: 0 auto;
+  margin: 10% auto;
   line-height: 1.5;
-  margin-top: 50px;
   text-align: left;
   font-size: 22px;
   margin-bottom: 100px;
@@ -16,4 +23,15 @@
   text-decoration: none;
   font-size: 22px;
   color: black;
+}
+
+.blog-post-content {
+  margin-top: 100px;
+  line-height: 2;
+}
+
+.blog-post-link {
+  margin-bottom: 100px;
+  display: inline-block;
+  margin-top: 100px;
 }

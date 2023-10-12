@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../component/Search.css';
 
 const API_URL = 'http://localhost:5005/api';
 
@@ -26,9 +27,13 @@ function Search({ setFilteredPosts }) {
   return (
     <header>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="searchBar"></label>
-        <input className="search-bar" type="text" placeholder="Search" name="searchBar" id="searchBar" onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} />
-        <button type="submit">Search</button>
+        <div className="search-container">
+          <label htmlFor="searchBar"></label>
+          <input className="search-bar" type="text" placeholder="Search" name="searchBar" id="searchBar" onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} />
+          <button className="search-btn" type="submit">
+            Search
+          </button>
+        </div>
       </form>
     </header>
   );

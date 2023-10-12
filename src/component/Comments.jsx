@@ -1,16 +1,14 @@
 import React from 'react';
 import '../component/Comments.css';
 import { useState } from 'react';
-import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import '../component/Comments.css';
 
 function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const { user } = useContext(AuthContext);
   const token = localStorage.getItem('authToken');
   const API_URL = 'http://localhost:5005/api';
   const { id } = useParams();
@@ -42,8 +40,12 @@ function Comments() {
   return (
     <div className="comments-wrapper">
       <form onSubmit={handleSubmit}>
-        <textarea className="comments-textarea" value={newComment} onChange={(e) => setNewComment(e.target.value)} cols="30" rows="10"></textarea>
-        <button type="submit">Add Comment</button>
+        <div className="comments-textarea-container">
+          <textarea className="comments-textarea" value={newComment} onChange={(e) => setNewComment(e.target.value)} cols="30" rows="10"></textarea>
+          <button className="comments-btn" type="submit">
+            Add Comment
+          </button>
+        </div>
       </form>
 
       {comments.map((comment) => (
