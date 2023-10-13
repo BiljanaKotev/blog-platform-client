@@ -17,7 +17,7 @@ import EditPage from './pages/EditPage';
 
 function App() {
   const location = useLocation();
-  let navbarColor = '';
+  let navbarColor = 'f';
   let navLinkColor = '';
   const { user } = useContext(AuthContext);
   // const { id } = useParams;

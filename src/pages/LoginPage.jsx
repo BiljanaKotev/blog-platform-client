@@ -49,14 +49,14 @@ function LoginPage() {
       <form className="auth-form" onSubmit={handleLoginSubmit}>
         <h1>Login</h1>
 
-        <div>
-          <label htmlFor="email">email</label>
-          <input type="text" name="email" id="email" value={email} onChange={handleEmail} />
+        <div className="email-container">
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" id="email" placeholder="ironhacker@gmail.com" value={email} onChange={handleEmail} />
         </div>
 
-        <div>
-          <label htmlFor="password">password</label>
-          <input type="password" name="password" id="password" value={password} onChange={handlePassword} autoComplete="currrent-password" />
+        <div className="password-container">
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="******" value={password} onChange={handlePassword} autoComplete="currrent-password" />
         </div>
         <button type="submit">Submit</button>
       </form>

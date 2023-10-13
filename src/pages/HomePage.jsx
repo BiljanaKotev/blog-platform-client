@@ -19,21 +19,21 @@ function HomePage() {
         </div>
         <div className="overlay"></div>
       </div>
-      <div className="homepage-header">
-        <h1 className=" text-white  ">Share your travels with the world. </h1>
-        <h2 className="text-white ">
+      <div className="homepage-header-container">
+        <h1 className=" text-white">Share your travels with the world. </h1>
+        <h2 className="text-white">
           Travel Hub is a central platform that connects travelers from around the world. It offers a unique blend of personal travel stories, actionable localized tips, and a
           dynamic community eager to share and engage.
         </h2>
+        <button className="homepage-btn" onClick={handleClick}>
+          Get Started
+        </button>
       </div>
 
-      <button className="homepage-btn" onClick={handleClick}>
-        Get Started
-      </button>
       <section className="homepage-blog-info">
-        <div className="blog-info-header">
-          <h3>Lorem ipsum dolor sit.</h3>
-          <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, porro.</h4>
+        <div className="homepage-info-header">
+          <h3>Your Travel Hub</h3>
+          <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad nihil in minima saepe, iste necessitatibus veniam quis nesciunt tempore ipsa!</h4>
         </div>
         <Cards />
       </section>

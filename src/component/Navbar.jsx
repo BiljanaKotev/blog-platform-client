@@ -7,12 +7,6 @@ import '../component/Navbar.css';
 import LogoutPage from '../pages/LogoutPage';
 
 function Navbar({ color, navLinkColor }) {
-  // const navigate = useNavigate();
-
-  // const handleLogout = () => {
-  //   logOutUser();
-  //   navigate('/');
-  // };
   const { isLoggedIn } = useContext(AuthContext);
 
   return (
