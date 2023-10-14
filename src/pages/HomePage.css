@@ -33,7 +33,6 @@
 }
 
 .homepage-btn {
-  /* background: #d3c00d; */
   background-color: #0d86d3;
   color: white;
   border: none;
@@ -41,6 +40,10 @@
   border-radius: 5px;
   top: 80%;
   font-size: 22px;
+}
+
+.homepage-btn:hover {
+  background-color: rgba(13, 135, 211, 0.8);
 }
 
 .homepage-img {

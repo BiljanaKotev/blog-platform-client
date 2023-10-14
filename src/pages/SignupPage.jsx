@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../pages/SignupPage.css';
 
 const API_URL = 'http://localhost:5005';
 
@@ -35,17 +36,17 @@ function SignupPage() {
 
   return (
     <main>
-      <form onSubmit={handleSignupSubmit}>
+      <form className="auth-form" onSubmit={handleSignupSubmit}>
         <h1>Signup</h1>
-        <div>
+        <div className="name-container">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" value={name} onChange={handleName} />
         </div>
-        <div>
+        <div className="email-container">
           <label htmlFor="email">Email</label>
           <input type="text" name="email" id="email" value={email} onChange={handleEmail} />
         </div>
-        <div>
+        <div className="password-container">
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" value={password} onChange={handlePassword} autoComplete="currrent-password" />
         </div>
@@ -53,7 +54,9 @@ function SignupPage() {
       </form>
       {errorMsg && <p>{errorMsg}</p>}
       <p>Already have an account?</p>
-      <Link to="{'/login}">Login</Link>
+      <Link className="homepage-login-link" to="{'/login}">
+        Login
+      </Link>
     </main>
   );
 }

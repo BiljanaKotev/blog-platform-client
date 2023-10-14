@@ -27,10 +27,10 @@ function Navbar({ color, navLinkColor }) {
 
       {!isLoggedIn && (
         <div className="nav-links-container">
-          <Link style={{ color: navLinkColor }} className="nav-link" to="/login">
+          <Link style={{ color: navLinkColor }} className="nav-link login-link" to="/login">
             Login
           </Link>
-          <Link style={{ color: navLinkColor }} className="nav-link" to="/signup">
+          <Link style={{ color: navLinkColor }} className="nav-link signup-link" to="/signup">
             Signup
           </Link>
         </div>

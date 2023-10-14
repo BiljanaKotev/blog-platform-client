@@ -19,20 +19,6 @@ const uploadProfilePic = (uploadData, token) => {
     .catch(errorHandler);
 };
 
-// const updateUserProfilePic = (profilePicUrl, token) => {
-//   return api
-//     .post('/update-user-profile-pic', { profilePicUrl }, { headers: { Authorization: `Bearer ${token}` } })
-//     .then((res) => res.data)
-//     .catch(errorHandler);
-// };
-
-// const uploadImage = (file) => {
-//   return api
-//     .post('/upload', file)
-//     .then((res) => res.data)
-//     .catch(errorHandler);
-// };
-
 // USED ON THE CREATE POST PAGE
 const createPostWithImage = (postData, coverImgFile, token) => {
   const uploadData = new FormData();

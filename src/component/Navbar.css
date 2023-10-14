@@ -37,7 +37,7 @@ nav {
 }
 
 .logout-btn {
-  background: #d3c00d;
+  background: #0d86d3;
   border: none;
   color: white;
   padding: 10px 15px;
@@ -51,4 +51,21 @@ nav {
   border-radius: 5px;
   text-decoration: none;
   border: none;
+}
+
+.login-link:hover {
+  background-color: rgba(13, 135, 211, 0.1);
+  border-radius: 10px;
+}
+
+.signup-link {
+  border-radius: 10px;
+  color: white;
+  border: 3px solid #0d86d3;
+  color: #0d86d3;
+}
+
+.signup-link:hover {
+  background-color: #0d86d3;
+  color: #ffffff;
 }

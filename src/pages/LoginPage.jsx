@@ -63,7 +63,9 @@ function LoginPage() {
 
       {errorMsg && <p>{errorMsg}</p>}
       <p>Don't have an account yet?</p>
-      <Link to={'/signup'}>Signup</Link>
+      <Link className="homepage-signup-link" to={'/signup'}>
+        Signup
+      </Link>
     </main>
   );
 }

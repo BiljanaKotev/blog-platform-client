@@ -1,15 +1,6 @@
-.auth-form {
-  width: 500px;
-  margin: 150px auto 50px auto;
-}
-
-.auth-form > h1 {
-  text-align: left;
-  font-family: 'Synonym', sans-serif;
-}
-
 .email-container,
-.password-container {
+.password-container,
+.name-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,12 +10,14 @@
   font-weight: 500;
 }
 
+.name-container > label,
 .email-container > label,
 .password-container > label {
   align-self: flex-start;
   font-size: 22px;
 }
 
+.name-container > input,
 .email-container > input,
 .password-container > input {
   width: 500px;
@@ -33,22 +26,11 @@
   border: 3px solid grey;
 }
 
-.auth-form > button {
-  width: 490px;
-  margin-top: 25px;
-  border: none;
-  height: 50px;
-  border-radius: 10px;
-  background: rgba(13, 135, 211, 0.8);
-  color: white;
-  font-size: 22px;
-}
-
 main > p {
   font-size: 20px;
 }
 
-.homepage-signup-link {
+.homepage-login-link {
   font-size: 18px;
   text-decoration: none;
 }
