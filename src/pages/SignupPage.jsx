@@ -11,6 +11,7 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(undefined);
+
   const navigate = useNavigate();
 
   const handleSignupSubmit = (e) => {
@@ -31,6 +32,7 @@ function SignupPage() {
   };
 
   const handleName = (e) => setName(e.target.value);
+
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
@@ -44,17 +46,17 @@ function SignupPage() {
         </div>
         <div className="email-container">
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" value={email} onChange={handleEmail} />
+          <input type="text" name="email" id="email" placeholder="ironhacker@gmail.com" value={email} onChange={handleEmail} />
         </div>
         <div className="password-container">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" value={password} onChange={handlePassword} autoComplete="currrent-password" />
+          <input type="password" name="password" id="password" placeholder="******" value={password} onChange={handlePassword} autoComplete="currrent-password" />
         </div>
         <button type="submit">Submit</button>
       </form>
       {errorMsg && <p>{errorMsg}</p>}
       <p>Already have an account?</p>
-      <Link className="homepage-login-link" to="{'/login}">
+      <Link className="homepage-login-link" to={'/login'}>
         Login
       </Link>
     </main>

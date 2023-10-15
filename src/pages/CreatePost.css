@@ -23,12 +23,21 @@
   padding: 10px;
   text-align: center;
   cursor: pointer;
+  border-radius: 5px;
+  border: 3px solid grey;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.cover-img-label:active {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
 }
 
 .cover-img-input {
   display: none;
-  border-radius: 5px;
-  border: 3px solid grey;
 }
 
 .create-post-textarea {
@@ -46,12 +55,19 @@
   background: #000000;
   border-radius: 5px;
   color: #ffffff;
+  padding: 10px 25px;
 }
 
 .create-post-title {
   height: 60px;
+  font-family: 'Synonym', sans-serif;
+  font-weight: 600;
+  font-size: 72px;
+  height: 100px;
 }
 
 .create-post-content {
   height: 300px;
+  font-family: 'Amulya', sans-serif;
+  font-size: 32px;
 }

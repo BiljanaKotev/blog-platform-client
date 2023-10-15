@@ -1,7 +1,13 @@
 .App {
   text-align: center;
 }
-/* body {
-  background-color: #f8e15d;
-} */
+
+body {
+  color: #0e1111;
+  background-color: #e8ecf0;
+}
+
+html {
+  background-color: #e8ecf0;
+}
 

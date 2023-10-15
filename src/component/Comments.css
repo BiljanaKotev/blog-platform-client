@@ -2,6 +2,7 @@
   border: 1px solid black;
   width: 750px;
   height: 150px;
+  resize: none;
 }
 
 .comments-container {
@@ -32,4 +33,8 @@
 
 .comments-btn {
   align-self: flex-start;
+  background-color: #000000;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 10px 25px;
 }

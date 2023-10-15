@@ -37,13 +37,13 @@ function Navbar({ color, navLinkColor }) {
       )}
       {isLoggedIn && (
         <div className="dashboard-links-container">
-          <Link to="/blog-feed" className="create-post-link">
+          <Link to="/blog-feed" className="blogfeed-link create-post-link">
             Blog Feed
           </Link>
           <Link to="/create-post" className="create-post-link">
             + Create Post
           </Link>
-          <Link to="/dashboard" className="dashboard-link">
+          <Link to="/dashboard" className="dashboard-btn-link">
             Dashboard
           </Link>
         </div>

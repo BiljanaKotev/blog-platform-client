@@ -42,15 +42,21 @@ nav {
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
+  font-family: 'Synonym', sans-serif;
 }
 
-.dashboard-link {
+.dashboard-btn-link {
   background-color: #000000;
   color: #ffffff;
   padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
   border: none;
+  font-family: 'Synonym', sans-serif;
+}
+
+.login-link {
+  font-family: 'Synonym', sans-serif;
 }
 
 .login-link:hover {
@@ -63,9 +69,16 @@ nav {
   color: white;
   border: 3px solid #0d86d3;
   color: #0d86d3;
+  font-family: 'Synonym', sans-serif;
 }
 
 .signup-link:hover {
   background-color: #0d86d3;
   color: #ffffff;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard-links-container {
+    display: none;
+  }
 }

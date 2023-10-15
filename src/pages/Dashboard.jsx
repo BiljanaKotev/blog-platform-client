@@ -15,6 +15,16 @@ function Dashboard() {
   const [userPosts, setUserPosts] = useState([]);
   const token = localStorage.getItem('authToken');
 
+  function capitalizeName() {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'Guest';
+    }
+  }
+
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
     uploadData.append('imgUrl', e.target.files[0]);
@@ -57,7 +67,7 @@ function Dashboard() {
 
   return (
     <main>
-      <h1>{user.name}'s Dashboard</h1>
+      <h1 className="dashboard-header">{capitalizeName()}'s Dashboard</h1>
       <img className="dashboard-profile-pic" src={profilePic} alt="login avatar" />
       <div>
         <label className="profile-pic-label" htmlFor="profilePicUrl">
@@ -65,11 +75,11 @@ function Dashboard() {
         </label>
         <input className="profile-pic-input" type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" onChange={handleProfilePic} />
       </div>
-      <div className="blog-posts-container">
-        <div className="blog-post-header">
-          <h2>Blog Posts:</h2>
-        </div>
+      <div className="dashboard-posts-container">
         <div className="blog-links-container">
+          <div className="dashboard-post-header">
+            <h2>Blog Posts:</h2>
+          </div>
           {userPosts.map((post) => (
             <Link key={post._id} className="blog-link" to={`/user-posts/${post._id}`}>
               <h2>{post.title}</h2>

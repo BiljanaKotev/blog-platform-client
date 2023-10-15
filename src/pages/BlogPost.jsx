@@ -36,6 +36,7 @@ function BlogPost() {
       <p>Created By: {post.author.name}</p>
       <Comments />
       <Link to="/blog-feed" className="blog-post-link">
+        <i class="fa-solid fa-arrow-left"></i>
         Back
       </Link>
     </div>

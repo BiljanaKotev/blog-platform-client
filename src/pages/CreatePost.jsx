@@ -60,7 +60,7 @@ function CreatePost() {
           </div>
           <div>
             <textarea
-              className="create-post-title fs-1 mt-5 create-post-textarea"
+              className="create-post-title  mt-5 create-post-textarea"
               name="title"
               id="title"
               placeholder="New post title here..."
@@ -70,17 +70,17 @@ function CreatePost() {
           </div>
           <div>
             <textarea
-              className="create-post-content fs-3 mt-5 create-post-textarea"
+              className="create-post-content mt-5 create-post-textarea"
               name="content"
               id="content"
-              placeholder="write your post conent here..."
+              placeholder="write your post content here..."
               value={content}
               onChange={handleContent}
             ></textarea>
           </div>
         </div>
 
-        <p>Created by: {user.name}</p>
+        <p className="fs-5">Created by: {user.name}</p>
         <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>

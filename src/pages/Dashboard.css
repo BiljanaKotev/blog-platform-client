@@ -1,7 +1,21 @@
+.dashboard-header {
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
 .blog-link {
   display: block;
   text-decoration: none;
-  font-size: 20px;
+}
+
+.blog-link > h2 {
+  font-size: 22px;
+  font-family: 'Amulya', sans-serif;
+  font-weight: 500;
+}
+
+.blog-links-container {
+  text-align: left;
 }
 
 .create-post-link {
@@ -31,14 +45,27 @@
   display: none;
 }
 
-.blog-posts-container {
+.dashboard-posts-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  margin-top: 150px;
+  align-items: flex-start;
+  margin-top: 100px;
+  margin-left: 150px;
+}
+
+.dashboard-post-header > h2 {
+  font-family: 'Synonym', sans-serif;
+  margin-bottom: 25px;
 }
 
 .cover-img-preview {
   width: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard-posts-container {
+    padding: 25px;
+    margin-left: 0;
+  }
 }

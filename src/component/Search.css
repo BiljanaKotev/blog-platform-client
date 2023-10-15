@@ -10,12 +10,14 @@
   gap: 25px;
 }
 
-.search-btn {
-  margin-top: 10%;
+.search-container > input {
+  border-radius: 10px;
 }
 
-.search-btn {
+.search-container > button {
+  padding: 5px 25px;
   background-color: #000000;
   color: #ffffff;
   border-radius: 5px;
+  margin-top: 10%;
 }
