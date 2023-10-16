@@ -55,7 +55,7 @@ function CreatePost() {
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
-            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImgChange} />
+            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="1" onChange={handleCoverImgChange} />
             {coverImgFile && <img className="cover-img-preview" src={URL.createObjectURL(coverImgFile)} alt="Cover preview" />}
           </div>
           <div>

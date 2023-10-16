@@ -36,8 +36,8 @@ function LoginPage() {
         authenticateUser();
         navigate('/dashboard');
       })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+      .catch((err) => {
+        const errorDescription = err.response.data.message;
         setErrorMsg(errorDescription);
       });
   };

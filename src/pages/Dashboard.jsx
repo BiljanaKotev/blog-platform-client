@@ -13,6 +13,7 @@ function Dashboard() {
   const { user, fetchUserPosts } = useContext(AuthContext);
   const [profilePic, setProfilePic] = useState(avatar);
   const [userPosts, setUserPosts] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(undefined);
   const token = localStorage.getItem('authToken');
 
   function capitalizeName() {
@@ -37,10 +38,11 @@ function Dashboard() {
         return axios.post(`${API_URL}/api/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
       })
       .then(() => {
-        console.group('User profile picture updated successfully');
+        console.log('User profile picture updated successfully');
       })
       .catch((err) => {
-        console.log('Error while updating the profile picture', err);
+        const errorDescription = err.response.data.message;
+        setErrorMsg(errorDescription);
       });
   };
 
@@ -73,8 +75,15 @@ function Dashboard() {
         <label className="profile-pic-label" htmlFor="profilePicUrl">
           Upload pic
         </label>
-        <input className="profile-pic-input" type="file" accept="image/*" data-max-file-size-mb="25" name="profilePicUrl" id="profilePicUrl" onChange={handleProfilePic} />
+        <input className="profile-pic-input" type="file" accept="image/*" data-max-file-size-mb="5" name="profilePicUrl" id="profilePicUrl" onChange={handleProfilePic} />
       </div>
+
+      {errorMsg && (
+        <div>
+          <p></p>problem loading picture try again
+        </div>
+      )}
+
       <div className="dashboard-posts-container">
         <div className="blog-links-container">
           <div className="dashboard-post-header">

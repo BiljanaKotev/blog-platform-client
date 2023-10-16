@@ -31,17 +31,14 @@
   text-decoration: none;
   font-size: 22px;
   color: black;
+  margin-bottom: 100px;
+  display: inline-block;
+  margin-top: 100px;
 }
 
 .blog-post-content {
   margin-top: 100px;
   line-height: 2;
-}
-
-.blog-post-link {
-  margin-bottom: 100px;
-  display: inline-block;
-  margin-top: 100px;
 }
 
 .fa-arrow-left {

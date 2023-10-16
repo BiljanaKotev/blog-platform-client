@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import './DeleteBtn.css';
 
 const API_URL = 'http://localhost:5005';
 
@@ -26,7 +27,9 @@ function DeleteBtn() {
 
   return (
     <div>
-      <button onClick={deletePost}>Delete</button>
+      <button className="delete-btn" onClick={deletePost}>
+        Delete
+      </button>
     </div>
   );
 }
