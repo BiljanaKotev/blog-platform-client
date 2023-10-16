@@ -15,39 +15,36 @@ function Cards() {
     setInitialIconColor('#0d86d3');
   };
 
+  const cardDetails = [
+    {
+      icon: 'fa-solid fa-2xl fa-user card-icon ',
+      title: 'Get started',
+      content: 'Sign up to start sharing your travel experiences with others',
+    },
+    {
+      icon: 'fa-solid fa-2xl fa-globe card-icon',
+      title: 'Connect',
+      content: 'Your one stop destination to connect with travelers from around the world',
+    },
+    {
+      icon: 'fa-solid fa-2xl fa-share card-icon',
+      title: 'Share',
+      content: 'Personal travel stories and local tips with a dynamic community!',
+    },
+  ];
+
   return (
     <div className="card-grid-container">
-      <div onMouseOver={hoverOnCard} onMouseOut={iconColor} className="card">
-        {isHover ? (
-          <i style={{ color: '#ffffff' }} className="fa-solid fa-2xl fa-user card-icon "></i>
-        ) : (
-          <i style={{ color: initialIconColor }} className="fa-solid fa-2xl fa-user card-icon "></i>
-        )}
+      {cardDetails.map((cardDetail) => {
+        return (
+          <div onMouseOver={hoverOnCard} onMouseOut={iconColor} className="card">
+            {isHover ? <i style={{ color: '#ffffff' }} className={cardDetail.icon}></i> : <i style={{ color: initialIconColor }} className={cardDetail.icon}></i>}
 
-        <h1>Get started.</h1>
-        <h2>Sign up to start sharing your travel experiences with others.</h2>
-      </div>
-      <div onMouseOver={hoverOnCard} onMouseOut={iconColor} className="card">
-        {isHover ? (
-          <i style={{ color: '#ffffff' }} className="fa-solid fa-2xl fa-globe card-icon "></i>
-        ) : (
-          <i style={{ color: initialIconColor }} className="fa-solid fa-2xl fa-globe card-icon "></i>
-        )}
-
-        <h1>Connect</h1>
-        <h2>Your one stop destination to connect with travelers from around the world</h2>
-      </div>
-
-      <div onMouseOver={hoverOnCard} onMouseOut={iconColor} className="card">
-        {isHover ? (
-          <i i style={{ color: '#ffffff' }} className="fa-solid fa-2xl fa-share card-icon"></i>
-        ) : (
-          <i style={{ color: initialIconColor }} className="fa-solid fa-2xl fa-share card-icon"></i>
-        )}
-
-        <h1>Share</h1>
-        <h2>Personal travel stories and local tips with a dynamic community!</h2>
-      </div>
+            <h1>{cardDetail.title}</h1>
+            <h2>{cardDetail.content}</h2>
+          </div>
+        );
+      })}
     </div>
   );
 }

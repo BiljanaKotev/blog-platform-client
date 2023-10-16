@@ -1,6 +1,8 @@
 .search-bar {
   margin-top: 10%;
   border: 3px solid grey;
+  width: 30%;
+  height: 40px;
 }
 
 .search-container {
