@@ -38,3 +38,13 @@ main > p {
 .auth-form > h1 {
   margin-bottom: 50px;
 }
+
+.signup-error-msg {
+  width: 25%;
+  margin: 0 auto;
+  font-size: 24px;
+  background: #fbe9e9;
+  color: #c91c1c;
+  padding: 25px;
+  margin-bottom: 25px;
+}

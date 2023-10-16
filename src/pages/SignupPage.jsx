@@ -54,7 +54,11 @@ function SignupPage() {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {errorMsg && <p>{errorMsg}</p>}
+      {errorMsg && (
+        <div>
+          <p className="signup-error-msg">{errorMsg}</p>
+        </div>
+      )}
       <p>Already have an account?</p>
       <Link className="homepage-login-link" to={'/login'}>
         Login

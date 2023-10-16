@@ -56,3 +56,13 @@ main > p {
   font-size: 18px;
   text-decoration: none;
 }
+
+.login-error-msg {
+  width: 25%;
+  margin: 0 auto;
+  font-size: 24px;
+  background: #fbe9e9;
+  color: #c91c1c;
+  padding: 25px;
+  margin-bottom: 25px;
+}

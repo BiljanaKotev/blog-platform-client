@@ -29,8 +29,6 @@ function LoginPage() {
         },
       })
       .then((response) => {
-        console.log('Login response:', response.data);
-
         storeToken(response.data.authToken);
         if (response.data.profilePicUrl) {
           localStorage.setItem('profilePic', response.data.profilePicUrl);
@@ -61,7 +59,11 @@ function LoginPage() {
         <button type="submit">Submit</button>
       </form>
 
-      {errorMsg && <p>{errorMsg}</p>}
+      {errorMsg && (
+        <div>
+          <p className="login-error-msg">{errorMsg}</p>
+        </div>
+      )}
       <p>Don't have an account yet?</p>
       <Link className="homepage-signup-link" to={'/signup'}>
         Signup
