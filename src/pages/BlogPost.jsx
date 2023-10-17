@@ -22,7 +22,7 @@ function BlogPost() {
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
+  }, [id, token]);
 
   if (!post) {
     return <div>Loading...</div>;
