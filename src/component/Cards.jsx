@@ -3,17 +3,22 @@ import '../component/Cards.css';
 import { useState } from 'react';
 
 function Cards() {
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(null);
   const [initialIconColor, setInitialIconColor] = useState('#0d86d3');
 
-  const hoverOnCard = () => {
-    setIsHover(true);
+  const hoverOnCard = (icon) => {
+    setIsHover(icon);
   };
 
-  const iconColor = () => {
-    setIsHover(false);
+  const clearHover = () => {
+    setIsHover(null);
     setInitialIconColor('#0d86d3');
   };
+
+  // const iconColor = () => {
+  //   setIsHover(false);
+  //   setInitialIconColor('#0d86d3');
+  // };
 
   const cardDetails = [
     {
@@ -37,9 +42,12 @@ function Cards() {
     <div className="card-grid-container">
       {cardDetails.map((cardDetail) => {
         return (
-          <div onMouseOver={hoverOnCard} onMouseOut={iconColor} className="card">
-            {isHover ? <i style={{ color: '#ffffff' }} className={cardDetail.icon}></i> : <i style={{ color: initialIconColor }} className={cardDetail.icon}></i>}
-
+          <div key={cardDetail.icon} onMouseOver={() => hoverOnCard(cardDetail.icon)} onMouseOut={clearHover} className="card">
+            {isHover === cardDetail.icon ? (
+              <i style={{ color: '#ffffff' }} className={cardDetail.icon}></i>
+            ) : (
+              <i style={{ color: initialIconColor }} className={cardDetail.icon}></i>
+            )}
             <h1>{cardDetail.title}</h1>
             <h2>{cardDetail.content}</h2>
           </div>

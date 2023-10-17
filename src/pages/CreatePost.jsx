@@ -51,7 +51,7 @@ function CreatePost() {
     <main className="blog-main">
       <form className="form create-form" onSubmit={handleCreateSubmit}>
         <div className="form-container">
-          <div>
+          <div className="create-post-input-container">
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
