@@ -1,12 +1,16 @@
 .logo {
-  width: 48px;
+  width: 100px;
 }
 
 nav {
   display: flex;
-  /* justify-content: space-between; */
-  justify-content: flex-end;
-  padding: 25px;
+  position: fixed;
+  padding-right: 25px;
+  background-color: #ffffff;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -17,7 +21,7 @@ nav {
 }
 
 .nav-link {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   font-size: 26px;
 }
@@ -28,23 +32,58 @@ nav {
 
 .logo-container {
   padding-left: 25px;
-  position: absolute;
+
   left: 0;
 }
 
 .logout-btn {
-  background: #d3c00d;
+  background: #0d86d3;
   border: none;
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
+  font-family: 'Synonym', sans-serif;
 }
 
-.dashboard-link {
+.dashboard-btn-link {
   background-color: #000000;
   color: #ffffff;
   padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
   border: none;
+  font-family: 'Synonym', sans-serif;
+}
+
+.login-link {
+  font-family: 'Synonym', sans-serif;
+}
+
+.login-link:hover {
+  background-color: rgba(13, 135, 211, 0.1);
+  border-radius: 10px;
+}
+
+.signup-link {
+  border-radius: 10px;
+  color: white;
+  border: 3px solid #0d86d3;
+  color: #0d86d3;
+  font-family: 'Synonym', sans-serif;
+}
+
+.signup-link:hover {
+  background-color: #0d86d3;
+  color: #ffffff;
+}
+
+hr {
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard-links-container {
+    display: none;
+  }
 }

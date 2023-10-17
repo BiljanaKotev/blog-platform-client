@@ -13,16 +13,16 @@ import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/auth.context';
 import EditPage from './pages/EditPage';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 function App() {
   const location = useLocation();
-  let navbarColor = '';
+  let navbarColor = 'f';
   let navLinkColor = '';
   const { user } = useContext(AuthContext);
-  const { id } = useParams;
+  // const { id } = useParams;
 
-  navbarColor = location.pathname === '/create-post' || `/user-posts/${id}/edit` ? '#f5f5f5' : '';
+  navbarColor = location.pathname === '/create-post' ? '#f5f5f5' : '';
   navLinkColor = location.pathname === '/login' ? '#000000' : '';
 
   return (

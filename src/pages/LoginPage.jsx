@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
+import '../pages/LoginPage.css';
 
 const API_URL = 'http://localhost:5005';
 
@@ -20,6 +21,7 @@ function LoginPage() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
+
     axios
       .post(`${API_URL}/auth/login`, requestBody, {
         headers: {
@@ -28,35 +30,44 @@ function LoginPage() {
       })
       .then((response) => {
         storeToken(response.data.authToken);
+        if (response.data.profilePicUrl) {
+          localStorage.setItem('profilePic', response.data.profilePicUrl);
+        }
         authenticateUser();
         navigate('/dashboard');
       })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+      .catch((err) => {
+        const errorDescription = err.response.data.message;
         setErrorMsg(errorDescription);
       });
   };
 
   return (
     <main>
-      <form onSubmit={handleLoginSubmit}>
+      <form className="auth-form" onSubmit={handleLoginSubmit}>
         <h1>Login</h1>
 
-        <div>
-          <label htmlFor="email">email</label>
-          <input type="text" name="email" id="email" value={email} onChange={handleEmail} />
+        <div className="email-container">
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" id="email" placeholder="ironhacker@gmail.com" value={email} onChange={handleEmail} />
         </div>
 
-        <div>
-          <label htmlFor="password">password</label>
-          <input type="password" name="password" id="password" value={password} onChange={handlePassword} autoComplete="currrent-password" />
+        <div className="password-container">
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="******" value={password} onChange={handlePassword} autoComplete="currrent-password" />
         </div>
         <button type="submit">Submit</button>
       </form>
 
-      {errorMsg && <p>{errorMsg}</p>}
+      {errorMsg && (
+        <div>
+          <p className="login-error-msg">{errorMsg}</p>
+        </div>
+      )}
       <p>Don't have an account yet?</p>
-      <Link to={'/signup'}>Signup</Link>
+      <Link className="homepage-signup-link" to={'/signup'}>
+        Signup
+      </Link>
     </main>
   );
 }

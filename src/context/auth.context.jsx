@@ -47,6 +47,7 @@ function AuthProviderWrapper(props) {
   };
 
   const logOutUser = () => {
+    console.log('logout from context');
     removeToken();
     authenticateUser();
   };

@@ -38,7 +38,7 @@ function BlogFeed() {
             </div>
             <div className="link-container">
               <Link to={`/blog-feed/${post._id}`} className="title-link">
-                <h1>{post.title}</h1>
+                <h1 className="link-title">{post.title}</h1>
               </Link>
             </div>
           </div>

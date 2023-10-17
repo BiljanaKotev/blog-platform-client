@@ -49,18 +49,18 @@ function CreatePost() {
 
   return (
     <main className="blog-main">
-      <form className="form" onSubmit={handleCreateSubmit}>
+      <form className="form create-form" onSubmit={handleCreateSubmit}>
         <div className="form-container">
-          <div>
+          <div className="create-post-input-container">
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
-            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="25" onChange={handleCoverImgChange} />
+            <input className="cover-img-input" name="coverImg" id="coverImg" type="file" accept="image/*" data-max-file-size-mb="1" onChange={handleCoverImgChange} />
             {coverImgFile && <img className="cover-img-preview" src={URL.createObjectURL(coverImgFile)} alt="Cover preview" />}
           </div>
           <div>
             <textarea
-              className="create-post-title fs-1 mt-5 create-post-textarea"
+              className="create-post-title  mt-5 create-post-textarea"
               name="title"
               id="title"
               placeholder="New post title here..."
@@ -70,18 +70,18 @@ function CreatePost() {
           </div>
           <div>
             <textarea
-              className="create-post-content fs-3 mt-5 create-post-textarea"
+              className="create-post-content mt-5 create-post-textarea"
               name="content"
               id="content"
-              placeholder="write your post conent here..."
+              placeholder="write your post content here..."
               value={content}
               onChange={handleContent}
             ></textarea>
           </div>
         </div>
 
-        <p>Created by: {user.name}</p>
-        <button type="submit" onClick={handlePublish}>
+        <p className="fs-5">Created by: {user.name}</p>
+        <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>
       </form>

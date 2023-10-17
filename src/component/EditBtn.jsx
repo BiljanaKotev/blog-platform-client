@@ -1,11 +1,8 @@
-import React from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import DeleteBtn from './DeleteBtn';
 import '../pages/UserPosts.css';
-
-const API_URL = 'http://localhost:5005';
+import './EditBtn.css';
 
 function EditBtn() {
   const navigate = useNavigate();
@@ -18,7 +15,9 @@ function EditBtn() {
   return (
     <div className="user-posts-btns-container">
       <DeleteBtn />
-      <button onClick={editPost}>Edit</button>
+      <button className="edit-btn" onClick={editPost}>
+        Edit
+      </button>
     </div>
   );
 }
