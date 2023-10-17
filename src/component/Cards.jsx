@@ -15,11 +15,6 @@ function Cards() {
     setInitialIconColor('#0d86d3');
   };
 
-  // const iconColor = () => {
-  //   setIsHover(false);
-  //   setInitialIconColor('#0d86d3');
-  // };
-
   const cardDetails = [
     {
       icon: 'fa-solid fa-2xl fa-user card-icon ',

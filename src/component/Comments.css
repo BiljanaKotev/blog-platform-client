@@ -38,3 +38,17 @@
   color: #ffffff;
   padding: 10px 25px;
 }
+
+.ellipsis {
+  margin-left: auto;
+  font-size: 48px;
+  align-self: center;
+  border: none;
+  background: inherit;
+  padding: 0 0 20px 0;
+}
+
+.comments-dropdown {
+  display: none;
+  list-style: none;
+}
