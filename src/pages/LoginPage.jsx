@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import '../pages/LoginPage.css';
 
-const API_URL = 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
 
 function LoginPage() {
   const [email, setEmail] = useState('');

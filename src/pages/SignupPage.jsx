@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../pages/SignupPage.css';
 
-const API_URL = 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
 
 function SignupPage() {
   const [name, setName] = useState('');
