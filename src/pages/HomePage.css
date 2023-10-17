@@ -68,3 +68,8 @@
   width: 50%;
   margin: 50px auto;
 }
+
+.homepage-img {
+  width: 1400px;
+  max-width: 100%;
+}
