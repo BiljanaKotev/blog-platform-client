@@ -32,8 +32,13 @@ function Dashboard() {
     service
       .uploadProfilePic(uploadData, token)
       .then((response) => {
-        setProfilePic(response.fileUrl);
-        localStorage.setItem('profilePic', response.fileUrl);
+        console.log(response);
+        if (response && response.data && response.data.fileUrl) {
+          setProfilePic(response.data.fileUrl);
+        } else {
+          console.error('Error: ', response);
+        }
+        localStorage.setItem('profilePic', response.data.fileUrl);
 
         return axios.post(`${API_URL}/api/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
       })
@@ -41,8 +46,10 @@ function Dashboard() {
         console.log('User profile picture updated successfully');
       })
       .catch((err) => {
+        console.log(err.config);
         const errorDescription = err.response.data.message;
         setErrorMsg(errorDescription);
+        console.log(err);
       });
   };
 
