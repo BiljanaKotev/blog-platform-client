@@ -45,7 +45,7 @@
 
 .create-post-textarea {
   border: none;
-  width: 750px;
+
   margin: 0 auto;
   resize: none;
 }
@@ -74,4 +74,5 @@
   height: 300px;
   font-family: 'Amulya', sans-serif;
   font-size: 32px;
+  width: 750px;
 }
