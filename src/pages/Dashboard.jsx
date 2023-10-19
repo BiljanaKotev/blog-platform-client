@@ -32,7 +32,6 @@ function Dashboard() {
     service
       .uploadProfilePic(uploadData, token)
       .then((response) => {
-        console.log(response);
         if (response && response.fileUrl) {
           setProfilePic(response.fileUrl);
         } else {
