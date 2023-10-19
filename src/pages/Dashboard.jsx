@@ -97,9 +97,11 @@ function Dashboard() {
             <h2>Blog Posts:</h2>
           </div>
           {userPosts.map((post) => (
-            <Link key={post._id} className="blog-link" to={`/user-posts/${post._id}`}>
-              <h2>{post.title}</h2>
-            </Link>
+            <div className="dashboard-links-container">
+              <Link key={post._id} className="blog-link" to={`/user-posts/${post._id}`}>
+                <h2>{post.title}</h2>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
