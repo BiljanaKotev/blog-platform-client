@@ -7,7 +7,7 @@ import '../pages/BlogPost.css';
 import '../component/Comments';
 import Comments from '../component/Comments';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function BlogPost() {
   const [post, setPost] = useState(null);

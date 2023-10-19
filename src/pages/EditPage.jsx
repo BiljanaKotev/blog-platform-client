@@ -4,7 +4,7 @@ import '../pages/EditPage.css';
 import service from '../api/service';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function EditPage() {
   const [userPost, setUserPost] = useState({});

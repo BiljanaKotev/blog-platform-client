@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import EditBtn from '../component/EditBtn';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function UserPost() {
   const [userPost, setUserPost] = useState([]);
