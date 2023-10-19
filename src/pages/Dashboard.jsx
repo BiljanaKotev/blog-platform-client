@@ -33,12 +33,12 @@ function Dashboard() {
       .uploadProfilePic(uploadData, token)
       .then((response) => {
         console.log(response);
-        if (response && response.data && response.data.fileUrl) {
-          setProfilePic(response.data.fileUrl);
+        if (response && response.fileUrl) {
+          setProfilePic(response.fileUrl);
         } else {
           console.error('Error: ', response);
         }
-        localStorage.setItem('profilePic', response.data.fileUrl);
+        localStorage.setItem('profilePic', response.fileUrl);
 
         return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
       })
