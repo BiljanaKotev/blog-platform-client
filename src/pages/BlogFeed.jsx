@@ -33,7 +33,7 @@ function BlogFeed() {
               <img className="cover-img" src={post.coverImg} alt="cover" />
             </div>
             <div className="user-details-container">
-              {post.author && <img className="blogfeed-profile-pic" src={post.author.profilePicUrl} alt="Author" />}
+              {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
               <h2 className="user-name">{post.author && post.author ? post.author.name : 'Loading...'}</h2>
             </div>
             <div className="link-container">
