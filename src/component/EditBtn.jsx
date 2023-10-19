@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import DeleteBtn from './DeleteBtn';
 import '../pages/UserPosts.css';
 import './EditBtn.css';

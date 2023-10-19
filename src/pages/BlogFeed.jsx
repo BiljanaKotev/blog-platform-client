@@ -17,12 +17,11 @@ function BlogFeed() {
       .then((response) => {
         setPosts(response);
         setFilteredPosts(response);
-        console.log(posts);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [token]);
+  }, [token, posts]);
 
   return (
     <div>
