@@ -1,3 +1,7 @@
+.delete-success-msg-container {
+  display: none;
+}
+
 .user-post-img {
   width: 800px;
 }

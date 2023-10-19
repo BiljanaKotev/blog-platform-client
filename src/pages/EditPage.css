@@ -16,7 +16,6 @@
 }
 
 .edit-main {
-  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -26,4 +25,20 @@
   border: none;
   width: 750px;
   margin: 0 auto;
+}
+
+.edit-form-container {
+  width: 100%;
+}
+
+.edit-input-container {
+  align-self: start;
+}
+
+.edit-update-btn {
+  background: #000000;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 10px 25px;
+  margin-bottom: 50px;
 }

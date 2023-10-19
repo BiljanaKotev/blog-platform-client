@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import EditBtn from '../component/EditBtn';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function UserPost() {
   const [userPost, setUserPost] = useState([]);
@@ -14,7 +14,7 @@ function UserPost() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/user-posts/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+      .get(`${API_URL}/user-posts/${id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         setUserPost(response.data);
       })
@@ -30,6 +30,10 @@ function UserPost() {
   return (
     <div>
       <div className="user-post-container">
+        <div className="success-msg-container">
+          <p>Post deleted successfully</p>
+        </div>
+
         <img className="cover-img blog user-post-img" src={userPost.coverImg} alt="Cover" />
         <h1>{userPost.title}</h1>
         <p className="user-post-content">{userPost.content}</p>
@@ -38,7 +42,7 @@ function UserPost() {
         <EditBtn />
 
         <Link to="/dashboard" className="user-post-back-link">
-          <i class="fa-solid fa-arrow-left"></i>
+          <i className="fa-solid fa-arrow-left"></i>
           Back
         </Link>
       </div>

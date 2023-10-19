@@ -22,7 +22,7 @@ function BlogFeed() {
       .catch((error) => {
         console.log(error);
       });
-  }, [token, posts]);
+  }, [token]);
 
   return (
     <div>

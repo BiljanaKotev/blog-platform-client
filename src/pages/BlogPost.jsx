@@ -7,7 +7,7 @@ import '../pages/BlogPost.css';
 import '../component/Comments';
 import Comments from '../component/Comments';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function BlogPost() {
   const [post, setPost] = useState(null);
@@ -15,7 +15,7 @@ function BlogPost() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/blog-feed/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+      .get(`${API_URL}/blog-feed/${id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         setPost(response.data);
       })

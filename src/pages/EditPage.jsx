@@ -4,7 +4,7 @@ import '../pages/EditPage.css';
 import service from '../api/service';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function EditPage() {
   const [userPost, setUserPost] = useState({});
@@ -18,7 +18,7 @@ function EditPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/user-posts/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+      .get(`${API_URL}/user-posts/${id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         const postData = response.data;
         setUserPost(postData);
@@ -59,8 +59,8 @@ function EditPage() {
   return (
     <main className="edit-main">
       <form onSubmit={handleEdit}>
-        <div className="form-container">
-          <div>
+        <div className="edit-form-container form-container">
+          <div className="edit-input-container">
             <label className="cover-img-label" htmlFor="coverImg">
               Add a cover image
             </label>
@@ -79,8 +79,10 @@ function EditPage() {
               value={content}
             ></textarea>
           </div>
-          <button type="submit">Update Post</button>
         </div>
+        <button className="edit-update-btn" type="submit">
+          Update Post
+        </button>
       </form>
     </main>
   );

@@ -7,7 +7,7 @@ import '../pages/Dashboard.css';
 import avatar from '../assets/images/avatar.png';
 import service from '../api/service';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function Dashboard() {
   const { user, fetchUserPosts } = useContext(AuthContext);
@@ -40,7 +40,7 @@ function Dashboard() {
         }
         localStorage.setItem('profilePic', response.data.fileUrl);
 
-        return axios.post(`${API_URL}/api/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
+        return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
       })
       .then(() => {
         console.log('User profile picture updated successfully');
