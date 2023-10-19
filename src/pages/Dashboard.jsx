@@ -29,24 +29,26 @@ function Dashboard() {
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
     uploadData.append('imgUrl', e.target.files[0]);
+
     service
       .uploadProfilePic(uploadData, token)
       .then((response) => {
         if (response && response.fileUrl) {
           setProfilePic(response.fileUrl);
-        } else {
-          console.error('Error:', response);
-        }
-        localStorage.setItem('profilePic', response.fileUrl);
+          localStorage.setItem('profilePic', response.fileUrl);
 
-        return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
+          return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
+        } else {
+          setProfilePic(avatar);
+          throw new Error('No file URL in response');
+        }
       })
       .then(() => {
         console.log('User profile picture updated successfully');
       })
       .catch((err) => {
         console.log(err.config);
-        const errorDescription = err.response.data.message;
+        const errorDescription = err.response?.data?.message || err.message;
         setErrorMsg(errorDescription);
         console.log(err);
       });
