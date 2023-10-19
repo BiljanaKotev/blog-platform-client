@@ -36,7 +36,7 @@ function Dashboard() {
         if (response && response.fileUrl) {
           setProfilePic(response.fileUrl);
         } else {
-          console.error('Error: ', response);
+          console.error('Error:', response);
         }
         localStorage.setItem('profilePic', response.fileUrl);
 
