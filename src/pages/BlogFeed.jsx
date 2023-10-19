@@ -5,6 +5,7 @@ import '../pages/BlogFeed.css';
 
 import service from '../api/service';
 import Search from '../component/Search';
+import avatar from '../assets/images/avatar.png';
 
 function BlogFeed() {
   const [posts, setPosts] = useState([]);
@@ -21,7 +22,7 @@ function BlogFeed() {
       .catch((error) => {
         console.log(error);
       });
-  }, [token, posts]);
+  }, [token]);
 
   return (
     <div>
@@ -33,7 +34,7 @@ function BlogFeed() {
               <img className="cover-img" src={post.coverImg} alt="cover" />
             </div>
             <div className="user-details-container">
-              {post.author && <img className="blogfeed-profile-pic" src={post.author.profilePicUrl} alt="Author" />}
+              {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
               <h2 className="user-name">{post.author && post.author ? post.author.name : 'Loading...'}</h2>
             </div>
             <div className="link-container">
