@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 import './DeleteBtn.css';
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function DeleteBtn() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const deletePost = (props) => {
+  const deletePost = () => {
     const token = localStorage.getItem('authToken');
 
     axios
