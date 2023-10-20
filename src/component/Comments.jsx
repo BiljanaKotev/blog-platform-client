@@ -6,14 +6,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import '../component/Comments.css';
 import { Link } from 'react-router-dom';
+import DeleteComment from './DeleteComment';
 
 function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
-
-  const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+  const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
   const { id } = useParams();
 
@@ -49,6 +49,10 @@ function Comments() {
     }
   };
 
+  const handleCommentDeleted = (deletedCommentId) => {
+    setComments((prevComments) => prevComments.filter((comment) => comment._id !== deletedCommentId));
+  };
+
   return (
     <div className="comments-wrapper">
       <form onSubmit={handleSubmit}>
@@ -74,21 +78,19 @@ function Comments() {
           </button>
           {dropDown === comment._id ? (
             <ul style={{ display: 'block' }} className="comments-dropdown">
-              <Link>
+              <Link to={`/blog-feed/${id}/comments/${comment._id}`}>
                 <li>Edit</li>
               </Link>
-              <Link>
-                <li>Delete</li>
-              </Link>
+
+              <DeleteComment commentId={comment._id} postId={id} onCommentDeleted={handleCommentDeleted} />
             </ul>
           ) : (
             <ul style={{ display: 'none' }} className="comments-dropdown">
-              <Link>
+              <Link to={`/blog-feed/${id}/comments/${comment._id}`}>
                 <li>Edit</li>
               </Link>
-              <Link>
-                <li>Delete</li>
-              </Link>
+
+              <DeleteComment commentId={comment._id} postId={id} />
             </ul>
           )}
         </div>
