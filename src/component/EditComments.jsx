@@ -20,7 +20,7 @@ function EditComment() {
       .then((response) => {
         setCommentText(response.data.text);
       });
-  }, [postId, commentId, API_URL, token]);
+  }, [postId, commentId, token]);
 
   const handleEdit = (e) => {
     e.preventDefault();
