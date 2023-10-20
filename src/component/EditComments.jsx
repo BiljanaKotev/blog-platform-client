@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './EditComments.css';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function EditComment() {
   const [commentText, setCommentText] = useState('');
