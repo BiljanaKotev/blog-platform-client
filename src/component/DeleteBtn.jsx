@@ -11,7 +11,7 @@ function DeleteBtn() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const deletePost = (props) => {
+  const deletePost = () => {
     const token = localStorage.getItem('authToken');
 
     axios
