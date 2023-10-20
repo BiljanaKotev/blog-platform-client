@@ -13,7 +13,8 @@ function Comments() {
   const [newComment, setNewComment] = useState('');
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
-  const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+
+  const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
   const { id } = useParams();
 
