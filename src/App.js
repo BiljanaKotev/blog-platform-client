@@ -9,6 +9,7 @@ import CreatePost from './pages/CreatePost';
 import BlogFeed from './pages/BlogFeed';
 import BlogPost from './pages/BlogPost';
 import UserPost from './pages/UserPost';
+import EditCommentsPage from './pages/EditCommentsPage';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/auth.context';
@@ -40,6 +41,7 @@ function App() {
         <Route path="blog-feed/:id" element={<BlogPost />}></Route>
         <Route path="/user-posts/:id" element={<UserPost errMsg={errorMsg} setErrMsg={setErrorMsg} />}></Route>
         <Route path="/user-posts/:id/edit" element={<EditPage />} />
+        <Route path="/blog-feed/:postId/comments/:commentId" element={<EditCommentsPage />} />
       </Routes>
     </div>
   );
