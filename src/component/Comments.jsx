@@ -10,12 +10,13 @@ import DeleteComment from './DeleteComment';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+
 function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
-  const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
   const { user } = useContext(AuthContext);
   const { id } = useParams();
 
