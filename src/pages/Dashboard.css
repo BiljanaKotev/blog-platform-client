@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   gap: 25px;
+  font-size: 26px;
 }
 
 .dashboard-profile-pic {
