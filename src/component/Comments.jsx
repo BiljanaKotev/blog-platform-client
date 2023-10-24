@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
 import DeleteComment from './DeleteComment';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
+import { API_URL } from '../api/service';
 
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+
 
 function Comments() {
   const [comments, setComments] = useState([]);
