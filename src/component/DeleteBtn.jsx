@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { API_URL } from '../api/service';
 import './DeleteBtn.css';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+
 
 function DeleteBtn() {
   const navigate = useNavigate();
