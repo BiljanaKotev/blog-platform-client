@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './EditComments.css';
-
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+import { API_URL } from '../api/service';
 
 function EditComment() {
   const [commentText, setCommentText] = useState('');
