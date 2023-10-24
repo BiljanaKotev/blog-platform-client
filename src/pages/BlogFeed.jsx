@@ -6,11 +6,24 @@ import '../pages/BlogFeed.css';
 import service from '../api/service';
 import Search from '../component/Search';
 import avatar from '../assets/images/avatar.png';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
 
 function BlogFeed() {
+  const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
+
+    function capitalizeName() {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'Loading...';
+    }
+  }
 
   useEffect(() => {
     service
@@ -35,7 +48,7 @@ function BlogFeed() {
             </div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
-              <h2 className="user-name">{post.author && post.author ? post.author.name : 'Loading...'}</h2>
+              <h2 className="user-name">{capitalizeName()}</h2>
             </div>
             <div className="link-container">
               <Link to={`/blog-feed/${post._id}`} className="title-link">
