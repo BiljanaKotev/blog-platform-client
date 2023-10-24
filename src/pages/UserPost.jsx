@@ -46,7 +46,7 @@ function UserPost() {
     <div>
       <div className="user-post-container">
         <div className="success-msg-container">
-          <p>Post deleted successfully</p>
+{/*           <p>Post deleted successfully</p> */}
         </div>
 
         <img className="cover-img blog user-post-img" src={userPost.coverImg} alt="Cover" />
