@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import EditBtn from '../component/EditBtn';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
+import { API_URL } from '../api/service';
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function UserPost() {
   const [userPost, setUserPost] = useState([]);
