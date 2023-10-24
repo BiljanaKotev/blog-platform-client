@@ -21,6 +21,10 @@
   margin-bottom: 10px;
 }
 
+.user-details-container > h2 {
+  font-size: 18px;
+}
+
 .user-name {
   font-size: 12px;
   margin-bottom: 0;
@@ -28,7 +32,6 @@
 
 .title-link {
   font-size: 18px;
-
   color: #000000;
 }
 

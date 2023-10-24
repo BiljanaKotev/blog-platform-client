@@ -16,6 +16,10 @@
   margin-top: 50px;
 }
 
+.comments-container > p {
+  font-size: 18px;
+}
+
 .comment-author {
   margin-bottom: 0;
 }

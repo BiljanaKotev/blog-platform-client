@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import '../component/Comments.css';
 import { Link } from 'react-router-dom';
 import DeleteComment from './DeleteComment';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
 
 function Comments() {
   const [comments, setComments] = useState([]);
@@ -14,8 +16,18 @@ function Comments() {
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
   const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
-
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
+
+  function capitalizeName() {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'user not found';
+    }
+  }
 
   useEffect(() => {
     axios
@@ -70,7 +82,7 @@ function Comments() {
             <img className="blogfeed-profile-pic" src={comment.author.profilePicUrl} alt="User" />
           </div>
           <p className="comment-author">
-            <strong>{comment.author.name}</strong>: {comment.text}
+            <strong>{capitalizeName()}</strong>: {comment.text}
           </p>
 
           <button className="ellipsis" onClick={() => dropDownMenu(comment._id)}>
