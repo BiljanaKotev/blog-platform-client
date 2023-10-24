@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import '../pages/Dashboard.css';
 import avatar from '../assets/images/avatar.png';
 import service from '../api/service';
+import { API_URL } from '../api/service';
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function Dashboard() {
   const { user, fetchUserPosts } = useContext(AuthContext);
