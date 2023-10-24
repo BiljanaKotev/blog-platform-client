@@ -18,6 +18,16 @@ function CreatePost() {
     return;
   }
 
+   function capitalizeName() {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'user not found';
+    }
+  }
+
   const handleCoverImgChange = (e) => {
     setCoverImgFile(e.target.files[0]);
   };
@@ -80,7 +90,7 @@ function CreatePost() {
           </div>
         </div>
 
-        <p className="fs-5">Created by: {user.name}</p>
+        <p className="fs-5">Created by: {capitalizeName()}</p>
         <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>
