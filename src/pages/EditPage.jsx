@@ -3,8 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../pages/EditPage.css';
 import service from '../api/service';
 import axios from 'axios';
-
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+import { API_URL } from '../api/service';
 
 function EditPage() {
   const [userPost, setUserPost] = useState({});
