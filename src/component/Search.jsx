@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../component/Search.css';
+import { API_URL } from '../api/service';
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
 function Search({ setFilteredPosts }) {
   const [searchTerm, setSearchTerm] = useState('');
