@@ -8,8 +8,7 @@ import '../component/Comments';
 import Comments from '../component/Comments';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
-
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+import { API_URL } from '../api/service';
 
 function BlogPost() {
   const [post, setPost] = useState(null);
