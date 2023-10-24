@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import EditBtn from '../component/EditBtn';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
 
 const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
 
@@ -12,6 +14,19 @@ function UserPost() {
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
+
+
+    function capitalizeName() {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'user not found';
+    }
+  }
+
   useEffect(() => {
     axios
       .get(`${API_URL}/user-posts/${id}`, { headers: { Authorization: `Bearer ${token}` } })
@@ -37,7 +52,7 @@ function UserPost() {
         <img className="cover-img blog user-post-img" src={userPost.coverImg} alt="Cover" />
         <h1>{userPost.title}</h1>
         <p className="user-post-content">{userPost.content}</p>
-        {userPost.author && userPost.author.name && <p>Created By: {userPost.author.name}</p>}
+        {userPost.author && userPost.author.name && <p>Created By: {capitalizeName()}</p>}
 
         <EditBtn />
 
