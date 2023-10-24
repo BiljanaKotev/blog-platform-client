@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
 import './DeleteBtn.css';
-
-const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://localhost:5005/api';
+import { API_URL } from '../api/service';
 
 function DeleteComment({ commentId, postId, onCommentDeleted }) {
   const token = localStorage.getItem('authToken');
