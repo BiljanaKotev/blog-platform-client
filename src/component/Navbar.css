@@ -56,7 +56,8 @@ nav {
 }
 
 .login-link {
-  font-family: 'Synonym', sans-serif;
+ font-family: 'Synonym', sans-serif;
+ font-size: 30px;
 }
 
 .login-link:hover {
