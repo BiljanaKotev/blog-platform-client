@@ -41,7 +41,7 @@ function Comments() {
       .catch((error) => {
         console.log(error);
       });
-  }, [id, token, API_URL]);
+  }, [id, token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
