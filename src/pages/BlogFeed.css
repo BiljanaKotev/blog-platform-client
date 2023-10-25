@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 150px auto;
+  width: 1200px;
 }
 
 .cover-img {
@@ -46,7 +47,6 @@
 }
 
 .blog-feed-post-container {
-  width: 800px;
   margin: 0 auto;
 }
 

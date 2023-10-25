@@ -45,7 +45,6 @@
 
 .create-post-textarea {
   border: none;
-
   margin: 0 auto;
   resize: none;
 }
@@ -68,11 +67,12 @@
   font-weight: 600;
   font-size: 72px;
   height: 100px;
+  width: 700px;
 }
 
 .create-post-content {
   height: 300px;
   font-family: 'Amulya', sans-serif;
   font-size: 32px;
-  width: 750px;
+  width: 700px;
 }

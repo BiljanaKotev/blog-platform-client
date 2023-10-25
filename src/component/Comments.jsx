@@ -38,7 +38,7 @@ function Comments() {
       .catch((error) => {
         console.log(error);
       });
-  }, [id, token, API_URL]);
+  }, [id, token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,7 +91,7 @@ function Comments() {
           {dropDown === comment._id ? (
             <ul style={{ display: 'block' }} className="comments-dropdown">
               <Link to={`/blog-feed/${id}/comments/${comment._id}`}>
-                <li>Edit</li>
+                <li className="comment-edit-link">Edit</li>
               </Link>
 
               <DeleteComment commentId={comment._id} postId={id} onCommentDeleted={handleCommentDeleted} />

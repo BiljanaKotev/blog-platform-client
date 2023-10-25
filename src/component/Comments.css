@@ -54,5 +54,9 @@
 
 .comments-dropdown {
   display: none;
+}
+
+.comments-dropdown > a {
   list-style: none;
+  text-decoration: none;
 }

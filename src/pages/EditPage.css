@@ -16,9 +16,9 @@
 }
 
 .edit-main {
-  display: flex;
-  justify-content: center;
   height: 100vh;
+  width: 800px;
+  margin: 0 auto;
 }
 
 .edit-post-textarea {
