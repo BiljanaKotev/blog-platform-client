@@ -14,9 +14,8 @@
   display: flex;
   align-items: center;
   gap: 25px;
-  margin-left: 150px;
-  margin-top: 25px;
-  margin-bottom: 10px;
+  width: 400px;
+  margin: 10px auto 0 auto;
 }
 
 .user-details-container > h2 {
@@ -30,7 +29,6 @@
 
 .title-link {
   font-size: 18px;
-
   color: #000000;
 }
 
@@ -41,8 +39,10 @@
 .title-link > h1 {
   font-size: 20px;
   font-family: 'Synonym', sans-serif;
-  width: 500px;
+  width: 400px;
   max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .blog-feed-post-container {
@@ -52,7 +52,9 @@
 
 .link-container {
   text-align: left;
-  margin-left: 155px;
+  display: flex;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .blogfeed-profile-pic {
@@ -60,3 +62,4 @@
   height: 48px;
   border-radius: 50%;
 }
+
