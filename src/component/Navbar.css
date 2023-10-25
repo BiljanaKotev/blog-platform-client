@@ -18,13 +18,11 @@ nav {
 .nav-links-container {
   display: flex;
   gap: 25px;
-  font-size: 22px;
 }
 
 .nav-link {
   color: #000000;
   text-decoration: none;
-  font-size: 26px;
 }
 
 .logo-wrapper {
@@ -44,7 +42,7 @@ nav {
   padding: 10px 15px;
   border-radius: 5px;
   font-family: 'Synonym', sans-serif;
-  font-size: 26px;
+  font-size: 18px;
 }
 
 .dashboard-btn-link {
@@ -59,7 +57,7 @@ nav {
 
 .login-link {
   font-family: 'Synonym', sans-serif;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .login-link:hover {
@@ -73,6 +71,7 @@ nav {
   border: 3px solid #0d86d3;
   color: #0d86d3;
   font-family: 'Synonym', sans-serif;
+  font-size: 18px;
 }
 
 .signup-link:hover {

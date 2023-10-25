@@ -1,6 +1,6 @@
 .auth-form {
   width: 500px;
-  margin: 150px auto 50px auto;
+  margin: 100px auto 50px auto;
 }
 
 .auth-form > h1 {
@@ -55,6 +55,8 @@ main > p {
 .homepage-signup-link {
   font-size: 18px;
   text-decoration: none;
+  margin-bottom: 50px;
+  display: block;
 }
 
 .login-error-msg {
