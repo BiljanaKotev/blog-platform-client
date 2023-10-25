@@ -14,8 +14,9 @@ function HomePage() {
   return (
     <main className="homepage-bg full-screen ">
       <div className="homepage-container">
-        <div>
+        <div className="homepage-img-container">
           <img className="homepage-img img-fluid" src={homepageImg} alt="" />
+          <span>Travel Hub</span>
         </div>
         <div className="overlay"></div>
       </div>

@@ -1,8 +1,6 @@
 .homepage-header-container {
-  /* position: absolute; */
   top: 30%;
   text-align: left;
-  /* padding: 50px; */
   background: black;
   width: 80%;
   margin: 50px;
@@ -26,6 +24,17 @@
 
 .homepage-container {
   position: relative;
+}
+
+.homepage-img-container > span {
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 140px;
+  left: 0;
+  right: 0;
+  top: 250px;
+  z-index: 1;
 }
 
 .overlay {
