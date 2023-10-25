@@ -4,6 +4,8 @@
   margin-bottom: 100px;
   gap: 25px;
   padding: 50px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .card {

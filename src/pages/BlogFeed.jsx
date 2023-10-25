@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
-
 import service from '../api/service';
 import Search from '../component/Search';
 import { AuthContext } from '../context/auth.context';
