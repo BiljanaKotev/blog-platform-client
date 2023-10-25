@@ -1,14 +1,12 @@
 .blog-feed-container {
   display: grid;
-  margin: 150px auto; /* This will center your container */
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-  width: 80%; /* Your specified width */
+  margin: 150px auto;
 }
 
 .cover-img {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
 }
 
