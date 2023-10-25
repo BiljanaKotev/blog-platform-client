@@ -16,6 +16,7 @@ function HomePage() {
       <div className="homepage-container">
         <div>
           <img className="homepage-img img-fluid" src={homepageImg} alt="" />
+            <span>Travel Hub</span>
         </div>
         <div className="overlay"></div>
       </div>
