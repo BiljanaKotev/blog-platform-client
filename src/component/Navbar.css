@@ -12,6 +12,7 @@ nav {
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
 }
 
 .nav-links-container {
@@ -57,8 +58,8 @@ nav {
 }
 
 .login-link {
- font-family: 'Synonym', sans-serif;
- font-size: 30px;
+  font-family: 'Synonym', sans-serif;
+  font-size: 30px;
 }
 
 .login-link:hover {
