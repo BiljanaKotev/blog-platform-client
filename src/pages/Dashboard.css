@@ -22,7 +22,6 @@
 .create-post-link {
   text-decoration: none;
   color: #000000;
-  font-size: 22px;
 }
 
 .dashboard-links-container {
@@ -30,6 +29,7 @@
   display: flex;
   align-items: center;
   gap: 25px;
+  font-size: 22px;
 }
 
 .dashboard-profile-pic {
