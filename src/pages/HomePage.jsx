@@ -1,7 +1,7 @@
 import React from 'react';
 import '../pages/HomePage.css';
 import { useNavigate } from 'react-router-dom';
-import homepageImg from '../assets/images/bg-pic-1.jpg';
+import homepageImg from '../assets/images/bg-pic-new.jpg';
 import Cards from '../component/Cards';
 
 function HomePage() {
