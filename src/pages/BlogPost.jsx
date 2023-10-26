@@ -17,7 +17,7 @@ function BlogPost() {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
 
-  function capitalizeName() {
+  function capitalizeName(name) {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -47,7 +47,7 @@ function BlogPost() {
       <img className="cover-img blog-post-img" src={post.coverImg} alt="Cover" />
       <h1 className="blog-post-header">{post.title}</h1>
       <p className="blog-post-content">{post.content}</p>
-      <p>Created By: {capitalizeName()}</p>
+      <p>Created By: {capitalizeName(post.author.name)}</p>
       <Comments />
       <Link to="/blog-feed" className="blog-post-link">
         <i className="fa-solid fa-arrow-left"></i>
