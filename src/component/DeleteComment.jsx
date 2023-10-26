@@ -23,8 +23,10 @@ function DeleteComment({ commentId, postId, onCommentDeleted }) {
   };
 
   return (
-    <div>
-      <button onClick={handleDelete}>Delete</button>
+      <div>
+      <button style={{ color: '#c91c1c', border: 'none', background: 'inherit' }} onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 }

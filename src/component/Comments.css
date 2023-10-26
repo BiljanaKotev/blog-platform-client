@@ -12,7 +12,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 25px;
-  width: 35%;
+  width: 750px;
   margin-top: 50px;
 }
 
@@ -31,7 +31,7 @@
   align-items: center;
   gap: 25px;
   text-align: left;
-  width: 35%;
+  width: 750px;
   margin: 0 auto;
 }
 
@@ -54,5 +54,10 @@
 
 .comments-dropdown {
   display: none;
-  list-style: none;
 }
+
+.comments-dropdown > a {
+  list-style: none;
+  text-decoration: none;
+}
+

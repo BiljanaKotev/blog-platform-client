@@ -1,5 +1,5 @@
 .logo {
-  width: 100px;
+  width: 75px;
 }
 
 nav {
@@ -12,7 +12,7 @@ nav {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 75px;
 }
 
 .nav-links-container {
@@ -31,7 +31,6 @@ nav {
 
 .logo-container {
   padding-left: 25px;
-
   left: 0;
 }
 
@@ -53,6 +52,7 @@ nav {
   text-decoration: none;
   border: none;
   font-family: 'Synonym', sans-serif;
+  font-size: 18px;
 }
 
 .login-link {
@@ -80,8 +80,8 @@ nav {
 }
 
 hr {
-  margin-top: 100px;
-  margin-bottom: 0;
+  margin-top: 60px;
+/*   margin-bottom: 0; */
 }
 
 @media only screen and (max-width: 600px) {
