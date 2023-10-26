@@ -10,7 +10,7 @@ import { useContext } from 'react';
 const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function UserPost() {
-  const [userPost, setUserPost] = useState([]);
+  const [userPost, setUserPost] = useState(null);
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const { id } = useParams();
@@ -46,7 +46,8 @@ function UserPost() {
       <div className="user-post-container">
         <div className="success-msg-container">{/* <p>Post deleted successfully</p> */}</div>
 
-        <img className="cover-img blog user-post-img" src={userPost.coverImg} alt="Cover" />
+        {!userPost ? <div>Loading...</div> : <img className="cover-img blog user-post-img" src={userPost.coverImg} alt="Cover" />}
+
         <h1>{userPost.title}</h1>
         <p className="user-post-content">{userPost.content}</p>
         {userPost.author && userPost.author.name && <p>Created By: {capitalizeName()}</p>}
