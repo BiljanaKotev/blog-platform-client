@@ -15,7 +15,7 @@ function BlogFeed() {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
 
-  function capitalizeName() {
+  function capitalizeName(name) {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -48,7 +48,7 @@ function BlogFeed() {
             </div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
-              <h2 className="user-name">{capitalizeName()}</h2>
+              <h2 className="user-name">{capitalizeName(post.author?.name)}</h2>
             </div>
             <div className="link-container">
               <Link to={`/blog-feed/${post._id}`} className="title-link">
