@@ -16,7 +16,7 @@ function UserPost() {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
 
-  function capitalizeName() {
+  function capitalizeName(name) {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -50,7 +50,7 @@ function UserPost() {
 
         <h1>{userPost.title}</h1>
         <p className="user-post-content">{userPost.content}</p>
-        {userPost.author && userPost.author.name && <p>Created By: {capitalizeName()}</p>}
+        {userPost.author && userPost.author.name && <p>Created By: {capitalizeName(author.name)}</p>}
 
         <EditBtn />
 
