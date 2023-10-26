@@ -18,7 +18,7 @@ function CreatePost() {
     return;
   }
 
-  function capitalizeName() {
+  function capitalizeName(name) {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -90,7 +90,7 @@ function CreatePost() {
           </div>
         </div>
 
-        <p className="fs-5">Created by: {capitalizeName()}</p>
+        <p className="fs-5">Created by: {capitalizeName(user.name)}</p>
         <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>
