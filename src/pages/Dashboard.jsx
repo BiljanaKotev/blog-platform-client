@@ -16,7 +16,7 @@ function Dashboard() {
   const [errorMsg, setErrorMsg] = useState(undefined);
   const token = localStorage.getItem('authToken');
 
-  function capitalizeName() {
+  function capitalizeName(name) {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -76,7 +76,7 @@ function Dashboard() {
 
   return (
     <main>
-      <h1 className="dashboard-header">{capitalizeName()}'s Dashboard</h1>
+      <h1 className="dashboard-header">{capitalizeName(user.name)}'s Dashboard</h1>
       <img className="dashboard-profile-pic" src={profilePic} alt="login avatar" />
       <div>
         <label className="profile-pic-label" htmlFor="profilePicUrl">
