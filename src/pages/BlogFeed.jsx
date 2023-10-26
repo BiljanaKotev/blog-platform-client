@@ -11,7 +11,7 @@ import { useContext } from 'react';
 
 function BlogFeed() {
   const { user } = useContext(AuthContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
 
@@ -44,7 +44,7 @@ function BlogFeed() {
         {filteredPosts.map((post) => (
           <div className="blog-feed-post-container" key={post._id}>
             <div>
-              <img className="cover-img" src={post.coverImg} alt="cover" />
+              <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
             </div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
