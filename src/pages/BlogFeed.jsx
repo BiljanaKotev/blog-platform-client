@@ -43,7 +43,9 @@ function BlogFeed() {
       <div className="blog-feed-container">
         {filteredPosts.map((post) => (
           <div className="blog-feed-post-container" key={post._id}>
-            <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
+            <div>
+              <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
+            </div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
               <h2 className="user-name">{capitalizeName()}</h2>
