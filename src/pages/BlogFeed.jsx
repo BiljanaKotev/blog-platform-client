@@ -4,10 +4,9 @@ import '../pages/BlogFeed.css';
 import service from '../api/service';
 import Search from '../component/Search';
 import { AuthContext } from '../context/auth.context';
-// import { useContext } from 'react';
+
 
 function BlogFeed() {
-  // const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState(null);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
