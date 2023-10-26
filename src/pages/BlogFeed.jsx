@@ -11,11 +11,11 @@ import { useContext } from 'react';
 
 function BlogFeed() {
   const { user } = useContext(AuthContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
 
-    function capitalizeName() {
+  function capitalizeName() {
     if (user) {
       const firstChar = user.name[0].toUpperCase();
       const substring = user.name.substring(1);
@@ -43,9 +43,7 @@ function BlogFeed() {
       <div className="blog-feed-container">
         {filteredPosts.map((post) => (
           <div className="blog-feed-post-container" key={post._id}>
-            <div>
-              <img className="cover-img" src={post.coverImg} alt="cover" />
-            </div>
+            <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author?.profilePicUrl || avatar} alt="Author" />}
               <h2 className="user-name">{capitalizeName()}</h2>

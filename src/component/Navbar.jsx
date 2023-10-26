@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
-import logo from '../assets/images/travel-hub-logo-3.png';
+import logo from '../assets/images/travel-hub-logo-2.png';
 import '../component/Navbar.css';
 import LogoutPage from '../pages/LogoutPage';
 
