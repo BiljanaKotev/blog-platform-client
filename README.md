@@ -27,7 +27,7 @@ A community driven blog platform where travelers can share their adventures with
 | /create-post| Createpost| private| user only|Upload cover image for post and enter text for title and body, publish to the blog feed|
 | /blog-feed| BlogFeed| private| user only| All user posts are here, can click on any post and will navigate to the specific post|
 | /blog-feed/:id| BlogPost| private| user only| You can comment on the posts on this page you can navigate back to the blogfeed or dashboard|
-|/user-posts/:id| UserPost| private| user only| You can 
+
  
 
 
