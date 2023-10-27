@@ -11,6 +11,19 @@ function BlogFeed() {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
 
+<<<<<<< HEAD
+=======
+  function capitalizeName(name) {
+    if (name) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'Loading...';
+    }
+  }
+
+>>>>>>> d5e2217e71ec869caef9fb5796b259d7c4cddb78
   useEffect(() => {
     service
       .fetchBlogFeed(token)
@@ -32,7 +45,11 @@ function BlogFeed() {
             <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author.profilePicUrl} alt="Author" />}
+<<<<<<< HEAD
               <h2 className="user-name">{capitalizeName(post.author?.name)}</h2>
+=======
+              <h2 className="user-name">{post.author && post.author.name ? capitalizeName(post.author.name) : 'Loading...'}</h2>
+>>>>>>> d5e2217e71ec869caef9fb5796b259d7c4cddb78
             </div>
             <div className="link-container">
               <Link to={`/blog-feed/${post._id}`} className="title-link">

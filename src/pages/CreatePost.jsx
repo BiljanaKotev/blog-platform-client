@@ -19,6 +19,19 @@ function CreatePost() {
     return;
   }
 
+<<<<<<< HEAD
+=======
+  function capitalizeName(name) {
+    if (user) {
+      const firstChar = user.name[0].toUpperCase();
+      const substring = user.name.substring(1);
+      return firstChar + substring;
+    } else {
+      return 'user not found';
+    }
+  }
+
+>>>>>>> d5e2217e71ec869caef9fb5796b259d7c4cddb78
   const handleCoverImgChange = (e) => {
     setCoverImgFile(e.target.files[0]);
   };
