@@ -132,4 +132,9 @@ Comment Model
 
 ### Git
 
+[Client repository link](https://github.com/BiljanaKotev/blog-platform-client)
+[Server repository link](https://github.com/BiljanaKotev/blog-platform-server)
+[Deployed App Link](https://travelhub-blog-platform.netlify.app/)
+
 ### Slides
+[Slides Link](https://docs.google.com/presentation/d/1rRmb0dinrodXGL6Ko8RKr1U4Xho_2TkoxHBQhkBN0NE/edit?usp=sharing)
