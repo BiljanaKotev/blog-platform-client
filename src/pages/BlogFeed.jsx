@@ -3,23 +3,13 @@ import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
 import service from '../api/service';
 import Search from '../component/Search';
-import { AuthContext } from '../context/auth.context';
-
+import capitalizeName from '../utils/utils';
 
 function BlogFeed() {
   const [posts, setPosts] = useState(null);
+  console.log(posts);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
-
-  function capitalizeName(name) {
-    if (name) {
-      const firstChar = name[0].toUpperCase();
-      const substring = name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'Loading...';
-    }
-  }
 
   useEffect(() => {
     service
