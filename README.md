@@ -33,6 +33,28 @@ A community driven blog platform where travelers can share their adventures with
 
 ### Components
 
+- Card
+- Comment
+- DeleteBtn
+- DeleteComment
+- EditBtn
+- EditComments
+- IsAnon
+- IsPrivate
+- Navbar
+- Search
+- BlogFeed
+- BlogPost
+- CreatePost
+- Dashboard
+- EditPage
+- HomePage
+- LoginPage
+- LogoutPage
+- SignupPage
+- UserPost
+  
+
 
 ### Services
 
