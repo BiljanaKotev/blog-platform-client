@@ -58,6 +58,9 @@ A community driven blog platform where travelers can share their adventures with
 
 ### Services
 
+- API for Cloudinary
+- Auth Context
+
 # Server/Backend
 
 
