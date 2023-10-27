@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/BlogFeed.css';
 import service from '../api/service';
 import Search from '../component/Search';
-import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
+import capitalizeName from '../utils/utils';
 
 function BlogFeed() {
-  const { user } = useContext(AuthContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
+  console.log(posts);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const token = localStorage.getItem('authToken');
-
-  function capitalizeName() {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'Loading...';
-    }
-  }
 
   useEffect(() => {
     service
@@ -41,12 +29,10 @@ function BlogFeed() {
       <div className="blog-feed-container">
         {filteredPosts.map((post) => (
           <div className="blog-feed-post-container" key={post._id}>
-            <div>
-              <img className="cover-img" src={post.coverImg} alt="cover" />
-            </div>
+            <div>{!post.coverImg ? <div>Loading...</div> : <img className="cover-img" src={post.coverImg} alt="cover" />}</div>
             <div className="user-details-container">
               {post.author && <img className="blogfeed-profile-pic" src={post.author.profilePicUrl} alt="Author" />}
-              <h2 className="user-name">{capitalizeName()}</h2>
+              <h2 className="user-name">{capitalizeName(post.author?.name)}</h2>
             </div>
             <div className="link-container">
               <Link to={`/blog-feed/${post._id}`} className="title-link">

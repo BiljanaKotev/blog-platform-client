@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import service from '../api/service';
+import capitalizeName from '../utils/utils';
 
 function CreatePost() {
   const [coverImgFile, setCoverImgFile] = useState(null);
@@ -16,16 +17,6 @@ function CreatePost() {
   if (!user || !user._id) {
     console.error('No user is logged in');
     return;
-  }
-
-  function capitalizeName() {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'user not found';
-    }
   }
 
   const handleCoverImgChange = (e) => {
@@ -90,7 +81,7 @@ function CreatePost() {
           </div>
         </div>
 
-        <p className="fs-5">Created by: {capitalizeName()}</p>
+        <p className="fs-5">Created by: {capitalizeName(user.name)}</p>
         <button className="create-btn" type="submit" onClick={handlePublish}>
           Publish
         </button>

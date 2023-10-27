@@ -7,27 +7,15 @@ import { useEffect } from 'react';
 import '../component/Comments.css';
 import { Link } from 'react-router-dom';
 import DeleteComment from './DeleteComment';
-import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
 import { API_URL } from '../api/service';
+import capitalizeName from '../utils/utils';
 
 function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
-  const { user } = useContext(AuthContext);
   const { id } = useParams();
-
-  function capitalizeName() {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'user not found';
-    }
-  }
 
   useEffect(() => {
     axios
@@ -82,7 +70,7 @@ function Comments() {
             <img className="blogfeed-profile-pic" src={comment.author.profilePicUrl} alt="User" />
           </div>
           <p className="comment-author">
-            <strong>{capitalizeName()}</strong>: {comment.text}
+            <strong>{capitalizeName(comment.author.name)}</strong>: {comment.text}
           </p>
 
           <button className="ellipsis" onClick={() => dropDownMenu(comment._id)}>
