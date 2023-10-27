@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom';
 import '../pages/Dashboard.css';
 import avatar from '../assets/images/avatar.png';
 import service from '../api/service';
-import { API_URL } from '../api/service';
+import capitalizeName from '../utils/utils';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
 
 function Dashboard() {
   const { user, fetchUserPosts } = useContext(AuthContext);
@@ -16,39 +17,28 @@ function Dashboard() {
   const [errorMsg, setErrorMsg] = useState(undefined);
   const token = localStorage.getItem('authToken');
 
-  function capitalizeName() {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'Guest';
-    }
-  }
-
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
     uploadData.append('imgUrl', e.target.files[0]);
-
     service
       .uploadProfilePic(uploadData, token)
       .then((response) => {
+        console.log(response);
         if (response && response.fileUrl) {
           setProfilePic(response.fileUrl);
-          localStorage.setItem('profilePic', response.fileUrl);
-
-          return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
         } else {
-          setProfilePic(avatar);
-          throw new Error('No file URL in response');
+          console.error('Error:', response);
         }
+        localStorage.setItem('profilePic', response.fileUrl);
+
+        return axios.post(`${API_URL}/update-user-profile-pic`, { userId: user._id, profilePicUrl: response.fileUrl }, { headers: { Authorization: `Bearer ${token}` } });
       })
       .then(() => {
         console.log('User profile picture updated successfully');
       })
       .catch((err) => {
         console.log(err.config);
-        const errorDescription = err.response?.data?.message || err.message;
+        const errorDescription = err.response.data.message;
         setErrorMsg(errorDescription);
         console.log(err);
       });
@@ -77,7 +67,7 @@ function Dashboard() {
 
   return (
     <main>
-      <h1 className="dashboard-header">{capitalizeName()}'s Dashboard</h1>
+      <h1 className="dashboard-header">{capitalizeName(user.name)}'s Dashboard</h1>
       <img className="dashboard-profile-pic" src={profilePic} alt="login avatar" />
       <div>
         <label className="profile-pic-label" htmlFor="profilePicUrl">
