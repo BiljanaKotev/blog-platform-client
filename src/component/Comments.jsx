@@ -7,31 +7,15 @@ import { useEffect } from 'react';
 import '../component/Comments.css';
 import { Link } from 'react-router-dom';
 import DeleteComment from './DeleteComment';
-import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
 import { API_URL } from '../api/service';
-
-
-
+import capitalizeName from '../utils/utils';
 
 function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [dropDown, setIsDropDown] = useState(false);
   const token = localStorage.getItem('authToken');
-
-  const { user } = useContext(AuthContext);
   const { id } = useParams();
-
-    function capitalizeName() {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'user not found';
-    }
-  }
 
   useEffect(() => {
     axios
@@ -86,7 +70,7 @@ function Comments() {
             <img className="blogfeed-profile-pic" src={comment.author.profilePicUrl} alt="User" />
           </div>
           <p className="comment-author">
-            <strong>{capitalizeName()}</strong>: {comment.text}
+            <strong>{capitalizeName(comment.author.name)}</strong>: {comment.text}
           </p>
 
           <button className="ellipsis" onClick={() => dropDownMenu(comment._id)}>
@@ -95,7 +79,7 @@ function Comments() {
           {dropDown === comment._id ? (
             <ul style={{ display: 'block' }} className="comments-dropdown">
               <Link to={`/blog-feed/${id}/comments/${comment._id}`}>
-                <li>Edit</li>
+                <li className="comment-edit-link">Edit</li>
               </Link>
 
               <DeleteComment commentId={comment._id} postId={id} onCommentDeleted={handleCommentDeleted} />
