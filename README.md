@@ -41,6 +41,90 @@ A community driven blog platform where travelers can share their adventures with
 
 ### Models
 
+User Model
+
+```
+  {
+    name: {
+      type: String,
+      required: [true, 'Username is required.'],
+    },
+    email: {
+      type: String,
+      required: [true, 'Email is required.'],
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    passwordHash: {
+      type: String,
+      required: [true, 'Password is required'],
+    },
+
+    profilePicUrl: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+```
+
+Post Model
+
+```
+ {
+    coverImg: {
+      type: String,
+      required: [true, 'Image is required'],
+    },
+    title: {
+      type: String,
+      required: [true, 'Title is required.'],
+    },
+    location: {
+      type: String,
+    },
+    content: {
+      type: String,
+      required: [true, 'Content is required.'],
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      // required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+```
+
+Comment Model 
+
+```
+  {
+    text: {
+      type: String,
+      required: [true, 'Text is required for the comment.'],
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    post: {
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+```
+
 ### API Endpoints(backend routes)
 
 
