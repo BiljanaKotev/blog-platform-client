@@ -4,10 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import EditBtn from '../component/EditBtn';
-
 import capitalizeName from '../utils/utils';
+import { API_URL } from '../api/service';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005/api';
+
 
 function UserPost() {
   const [userPost, setUserPost] = useState(null);
