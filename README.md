@@ -24,7 +24,7 @@ A community driven blog platform where travelers can share their adventures with
 | /login| LoginPage| public| Login form, link to signup, navigate to dashboard after logging in|
 | /logout| LogoutPage| private| user only| Navigate to homepage after logout, expire session|
 | /dashboard| Dashboard| private| user only| Shows all user blog posts, user can create a blog post, user can navigate to the blogfeed|
-| /create-post| Createpost| private| user only| Upload cover image for post and enter text for title and body, publish to the blog feed|
+| /create-post| Createpost| private| user only|Upload cover image for post and enter text for title and body, publish to the blog feed|
 | /blog-feed| BlogFeed| private| user only| All user posts are here, can click on any post and will navigate to the specific post|
 | /blog-feed/:id| BlogPost| private| user only| You can comment on the posts on this page you can navigate back to the blogfeed or dashboard|
 |/user-posts/:id| UserPost| private| user only| You can 
