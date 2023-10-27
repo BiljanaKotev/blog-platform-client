@@ -129,6 +129,7 @@ Comment Model
 
 
 ### Links
+[Link to Figma Board](https://www.figma.com/file/7BAzVZNydJyhzOkOh2A0vQ/Untitled?type=design&node-id=0%3A1&mode=design&t=4bXI6mGdw2Ewzd74-1)
 
 ### Git
 
