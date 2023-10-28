@@ -17,19 +17,6 @@ function Dashboard() {
   const [errorMsg, setErrorMsg] = useState(undefined);
   const token = localStorage.getItem('authToken');
 
-<<<<<<< HEAD
-=======
-  function capitalizeName(name) {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'Guest';
-    }
-  }
-
->>>>>>> d5e2217e71ec869caef9fb5796b259d7c4cddb78
   const handleProfilePic = (e) => {
     const uploadData = new FormData();
     uploadData.append('imgUrl', e.target.files[0]);

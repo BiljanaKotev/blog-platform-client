@@ -14,20 +14,6 @@ function BlogPost() {
   const [post, setPost] = useState(null);
   const token = localStorage.getItem('authToken');
   const { id } = useParams();
-<<<<<<< HEAD
-=======
-  const { user } = useContext(AuthContext);
-
-  function capitalizeName(name) {
-    if (user) {
-      const firstChar = user.name[0].toUpperCase();
-      const substring = user.name.substring(1);
-      return firstChar + substring;
-    } else {
-      return 'user not found';
-    }
-  }
->>>>>>> d5e2217e71ec869caef9fb5796b259d7c4cddb78
 
   useEffect(() => {
     axios
