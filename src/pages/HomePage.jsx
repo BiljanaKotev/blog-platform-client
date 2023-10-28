@@ -34,7 +34,7 @@ function HomePage() {
       <section className="homepage-blog-info">
         <div className="homepage-info-header">
           <h3>Your Travel Hub</h3>
-          <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad nihil in minima saepe, iste necessitatibus veniam quis nesciunt tempore ipsa!</h4>
+          <h4>Welcome to TravelHub - the heart of authentic travel experiences. Dive into genuine travel tales from people who’ve been where you’re headed. Get invaluable local tips that guidebooks miss and engage with a thriving community of explorers. Don’t just travel; experience destinations through the eyes of those who’ve treaded the path. Join TravelHub and make every journey unforgettable!</h4>
         </div>
         <Cards />
       </section>
