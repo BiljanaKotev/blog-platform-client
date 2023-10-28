@@ -80,8 +80,9 @@
 }
 
 .homepage-info-header > h4 {
+  text-align: 80%
   font-weight: 100;
   font-family: 'Amulya', sans-serif;
-  width: 50%;
+  width: 80%;
   margin: 50px auto;
 }
