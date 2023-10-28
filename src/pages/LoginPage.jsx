@@ -5,10 +5,18 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import '../pages/LoginPage.css';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005';
 
+const override = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'red',
+};
+
 function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(undefined);
@@ -21,6 +29,7 @@ function LoginPage() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
+    setLoading(true);
 
     axios
       .post(`${API_URL}/auth/login`, requestBody, {
@@ -29,6 +38,7 @@ function LoginPage() {
         },
       })
       .then((response) => {
+        setLoading(false);
         storeToken(response.data.authToken);
         if (response.data.profilePicUrl) {
           localStorage.setItem('profilePic', response.data.profilePicUrl);
@@ -39,11 +49,13 @@ function LoginPage() {
       .catch((err) => {
         const errorDescription = err.response.data.message;
         setErrorMsg(errorDescription);
+        setLoading(false);
       });
   };
 
   return (
     <main>
+      {loading && <ClipLoader color="#000" loading={loading} css={override} size={50} aria-label="Loading Spinner" />}
       <form className="auth-form" onSubmit={handleLoginSubmit}>
         <h1>Login</h1>
 
