@@ -1,3 +1,7 @@
+main > span {
+ margin-top: 200px;
+}
+
 .auth-form {
   width: 500px;
   margin: 100px auto 50px auto;
